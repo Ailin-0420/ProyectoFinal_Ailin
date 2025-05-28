@@ -29,17 +29,16 @@ public class Dinosaurios {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_DietaGeneral")
-    private TipoDieta tipo_DietaGeneral;
+    private String tipo_DietaGeneral;
 
     private String preferencia_Alimento;
 
     private boolean domesticable;
 
-    // Constructor vacío para JPA
     public Dinosaurios() {}
 
-    // Constructor con todos los campos menos id (que se genera)
-    public Dinosaurios(String nombre, TipoDieta tipo_DietaGeneral, String preferencia_Alimento, boolean domesticable) {
+    public Dinosaurios(int id_Dino, String nombre, String tipo_DietaGeneral, String preferencia_Alimento, boolean domesticable) {
+        this.id_Dino = id_Dino;
         this.nombre = nombre;
         this.tipo_DietaGeneral = tipo_DietaGeneral;
         this.preferencia_Alimento = preferencia_Alimento;
@@ -53,8 +52,8 @@ public class Dinosaurios {
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public TipoDieta getTipo_DietaGeneral() { return tipo_DietaGeneral; }
-    public void setTipo_DietaGeneral(TipoDieta tipo_DietaGeneral) { this.tipo_DietaGeneral = tipo_DietaGeneral; }
+    public String getTipo_DietaGeneral() { return tipo_DietaGeneral; }
+    public void setTipo_DietaGeneral(String tipo_DietaGeneral) { this.tipo_DietaGeneral = tipo_DietaGeneral; }
 
     public String getPreferencia_Alimento() { return preferencia_Alimento; }
     public void setPreferencia_Alimento(String preferencia_Alimento) { this.preferencia_Alimento = preferencia_Alimento; }

@@ -30,6 +30,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        añadirDino = new javax.swing.JButton();
+        modifDino = new javax.swing.JButton();
+        verDino = new javax.swing.JButton();
+        eliminarDino = new javax.swing.JButton();
 
         button1.setLabel("button1");
 
@@ -65,19 +70,93 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setText("BIENVENIDO A ARKMINO");
+
+        añadirDino.setText("Añadir dinosaurio");
+        añadirDino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                añadirDinoActionPerformed(evt);
+            }
+        });
+
+        modifDino.setText("Modificar dinosaurio");
+        modifDino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifDinoActionPerformed(evt);
+            }
+        });
+
+        verDino.setText("Ver dinosaurio");
+        verDino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verDinoActionPerformed(evt);
+            }
+        });
+
+        eliminarDino.setText("Eliminar dinosaurio");
+        eliminarDino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarDinoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1121, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(añadirDino))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(verDino))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(eliminarDino)
+                                .addComponent(modifDino)))))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 383, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jLabel1)
+                .addGap(28, 28, 28)
+                .addComponent(añadirDino)
+                .addGap(18, 18, 18)
+                .addComponent(modifDino)
+                .addGap(18, 18, 18)
+                .addComponent(verDino)
+                .addGap(18, 18, 18)
+                .addComponent(eliminarDino)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void modifDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifDinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modifDinoActionPerformed
+
+    private void verDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verDinoActionPerformed
+
+    private void eliminarDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarDinoActionPerformed
+
+    private void añadirDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirDinoActionPerformed
+        // TODO add your handling code here:
+        AñadirDino frame = new AñadirDino();
+        frame.setVisible(true);
+    }//GEN-LAST:event_añadirDinoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,9 +194,14 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton añadirDino;
     private java.awt.Button button1;
+    private javax.swing.JButton eliminarDino;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton modifDino;
+    private javax.swing.JButton verDino;
     // End of variables declaration//GEN-END:variables
 }
