@@ -5,6 +5,8 @@
 package vistas;
 
 import controladores.ControladorDinosaurios;
+import controladores.ControladorHabitatDino;
+import entidades.Dino_Habitat;
 import entidades.Dinosaurios;
 import javax.swing.JOptionPane;
 
@@ -32,6 +34,7 @@ public class ModificarDino extends javax.swing.JFrame {
 
         IDaModificar1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         IDaModificar = new javax.swing.JTextField();
@@ -44,6 +47,8 @@ public class ModificarDino extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         domesticableModf = new javax.swing.JCheckBox();
         guardarDinoModf = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        habitatModificado = new javax.swing.JTextField();
 
         IDaModificar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,9 +60,15 @@ public class ModificarDino extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("URW Gothic", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Modificar Dino");
 
+        jLabel2.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Introduce el ID del dinosaurio a modificar:");
 
         IDaModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +77,8 @@ public class ModificarDino extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Modificar nombre:");
 
         nombreModf.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +87,8 @@ public class ModificarDino extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Modificar dieta:");
 
         dietaModf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Herbivoro", "Carnivoro", "Otro" }));
@@ -83,6 +98,8 @@ public class ModificarDino extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Preferencia alimento:");
 
         prefAlimentoModf.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +108,9 @@ public class ModificarDino extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Si hes domesticable, marque la casilla:");
+        jLabel8.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Si es domesticable, marque la casilla:");
 
         domesticableModf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +118,9 @@ public class ModificarDino extends javax.swing.JFrame {
             }
         });
 
+        guardarDinoModf.setBackground(new java.awt.Color(255, 255, 255));
+        guardarDinoModf.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
+        guardarDinoModf.setForeground(new java.awt.Color(0, 0, 0));
         guardarDinoModf.setText("Guardar");
         guardarDinoModf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,67 +128,99 @@ public class ModificarDino extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Por ultimo, escriba el habitat:");
+
+        habitatModificado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                habitatModificadoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addComponent(guardarDinoModf))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreModf, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dietaModf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IDaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel8)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(156, 156, 156)
+                                .addComponent(jLabel7)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(prefAlimentoModf, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(habitatModificado, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(domesticableModf))))
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(jLabel1)
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(IDaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreModf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dietaModf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(prefAlimentoModf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(domesticableModf)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(habitatModificado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(guardarDinoModf)
+                .addGap(14, 14, 14))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(guardarDinoModf))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(8, 8, 8)))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreModf, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(IDaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dietaModf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(prefAlimentoModf, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(domesticableModf))))
-                .addContainerGap(35, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(IDaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreModf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(dietaModf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prefAlimentoModf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(domesticableModf))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(guardarDinoModf)
-                .addContainerGap(12, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -204,8 +258,9 @@ public class ModificarDino extends javax.swing.JFrame {
         String dieta = (String) dietaModf.getSelectedItem();
         String preferencia = prefAlimentoModf.getText().trim();
         boolean domesticable = domesticableModf.isSelected();
+        String habitat = habitatModificado.getText().trim();
 
-        if (nombre.isEmpty() || dieta.isEmpty() || preferencia.isEmpty()) {
+        if (nombre.isEmpty() || dieta.isEmpty() || preferencia.isEmpty() || habitat.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -218,6 +273,7 @@ public class ModificarDino extends javax.swing.JFrame {
             return;
         }
 
+        // Actualizar datos del dinosaurio
         dino.setNombre(nombre);
         dino.setTipo_DietaGeneral(dieta);
         dino.setPreferencia_Alimento(preferencia);
@@ -226,15 +282,51 @@ public class ModificarDino extends javax.swing.JFrame {
         boolean actualizado = controlador.actualizarDino(dino);
 
         if (actualizado) {
-            JOptionPane.showMessageDialog(this, "Dinosaurio actualizado con exito.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose(); // cerrar la ventana
+            // Ahora actualizar o crear el habitat
+            ControladorHabitatDino controladorHabitat = new ControladorHabitatDino();
+            
+            // Suponemos que tienes un método para obtener el habitat por dinosaurio
+            Dino_Habitat dinoHabitat = controladorHabitat.obtenerHabitatPorDino(dino);
+            dino.set(habitat); 
+            if (dinoHabitat == null) {
+                // Si no existe, crear nuevo
+                dinoHabitat = new Dino_Habitat();
+                dinoHabitat.setDinosaurio(dino);
+                dinoHabitat.setFechaInsertado(new java.util.Date());
+                dinoHabitat.setPorcentaje_Aparicion(100); // valor fijo, puedes cambiarlo si quieres
+            }
+            
+            // Actualizar coordenadas (habitat)
+            dinoHabitat.setCoordenadas_Aparicion(habitat);
+            
+            boolean habitatActualizado = false;
+            if (dinoHabitat.getId_HabitatDino() == null) {
+                // No tiene ID: nuevo registro
+                habitatActualizado = controladorHabitat.crearHabitat(dinoHabitat);
+            } else {
+                // Ya existe: actualizar
+                habitatActualizado = controladorHabitat.actualizarHabitat(dinoHabitat);
+            }
+
+            if (habitatActualizado) {
+                JOptionPane.showMessageDialog(this, "Dinosaurio y habitat actualizados con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al guardar el habitat.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
         } else {
             JOptionPane.showMessageDialog(this, "Error al actualizar el dinosaurio.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
     } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "El ID debe ser un numero valido.", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "El ID debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_guardarDinoModfActionPerformed
+
+    private void habitatModificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habitatModificadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_habitatModificadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,6 +369,7 @@ public class ModificarDino extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> dietaModf;
     private javax.swing.JCheckBox domesticableModf;
     private javax.swing.JButton guardarDinoModf;
+    private javax.swing.JTextField habitatModificado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -284,6 +377,8 @@ public class ModificarDino extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombreModf;
     private javax.swing.JTextField prefAlimentoModf;
     // End of variables declaration//GEN-END:variables
