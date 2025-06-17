@@ -35,7 +35,7 @@ public class ControladorHabitatDino {
      */
     public boolean crearHabitat(Dino_Habitat habitat) {
         // Validacion simple
-        if(habitat.getDinosaurio() == null) {
+        if (habitat.getDinosaurio() == null) {
             System.out.println("Error: El habitat debe tener un dinosaurio asociado");
             return false;
         }
@@ -64,14 +64,30 @@ public class ControladorHabitatDino {
         EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<Dino_Habitat> query = em.createQuery(
-                "SELECT h FROM Dino_Habitat h WHERE h.dinosaurio = :dino", 
-                Dino_Habitat.class);
+                    "SELECT h FROM Dino_Habitat h WHERE h.dinosaurio = :dino",
+                    Dino_Habitat.class);
             query.setParameter("dino", dino);
             return query.getSingleResult();
         } catch (NoResultException e) {
             return null; // No encontro resultados
         } catch (Exception e) {
             System.out.println("Error en busqueda: " + e.getMessage());
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+
+    public Dino_Habitat buscarPorTextoYDino(String texto, Dinosaurios dino) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            TypedQuery<Dino_Habitat> query = em.createQuery(
+                    "SELECT h FROM Dino_Habitat h WHERE h.texto_Habitat = :texto AND h.dinosaurio = :dino",
+                    Dino_Habitat.class);
+            query.setParameter("texto", texto);
+            query.setParameter("dino", dino);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
             return null;
         } finally {
             em.close();
@@ -107,7 +123,7 @@ public class ControladorHabitatDino {
         try {
             em.getTransaction().begin();
             Dino_Habitat habitat = em.find(Dino_Habitat.class, id);
-            if(habitat != null) {
+            if (habitat != null) {
                 em.remove(habitat);
                 em.getTransaction().commit();
                 return true;
@@ -128,7 +144,7 @@ public class ControladorHabitatDino {
      * Cierra la conexion cuando ya no se necesite
      */
     public void cerrar() {
-        if(emf != null && emf.isOpen()) {
+        if (emf != null && emf.isOpen()) {
             emf.close();
         }
     }

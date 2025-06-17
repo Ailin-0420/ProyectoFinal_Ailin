@@ -22,7 +22,6 @@ public class ControladorTameos {
         this.emf = Persistence.createEntityManagerFactory("arkmino"); // "arkmino" = nombre de la BD
     }
 
-
     public boolean crearTameo(Tameos tameo) {
         EntityManager em = emf.createEntityManager();
         try {
