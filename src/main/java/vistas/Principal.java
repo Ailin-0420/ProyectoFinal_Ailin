@@ -169,14 +169,20 @@ public class Principal extends javax.swing.JFrame {
 
     private void modifDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifDinoActionPerformed
         // TODO add your handling code here:
+        ModificarDino frame = new ModificarDino();
+        frame.setVisible(true);
     }//GEN-LAST:event_modifDinoActionPerformed
 
     private void verDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDinoActionPerformed
         // TODO add your handling code here:
+        VerDino frame = new VerDino();
+        frame.setVisible(true);
     }//GEN-LAST:event_verDinoActionPerformed
 
     private void eliminarDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDinoActionPerformed
         // TODO add your handling code here:
+        EliminarDino frame = new EliminarDino();
+        frame.setVisible(true);
     }//GEN-LAST:event_eliminarDinoActionPerformed
 
     private void añadirDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirDinoActionPerformed
