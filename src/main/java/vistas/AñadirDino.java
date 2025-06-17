@@ -220,6 +220,7 @@ public class AñadirDino extends javax.swing.JFrame {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
 
+        // Validación de campos
         String nombre = this.nombre.getText().trim();
         String tipoDieta = (String) this.tipoDieta.getSelectedItem();
         String preferencia = preferenciaAlimento.getText().trim();
@@ -227,40 +228,60 @@ public class AñadirDino extends javax.swing.JFrame {
         String habitat = this.habitatDino.getText().trim();
 
         if (nombre.isEmpty() || preferencia.isEmpty() || habitat.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos",
+                    "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Crear el dinosaurio
-        Dinosaurios dino = new Dinosaurios();
-        dino.setNombre(nombre);
-        dino.setTipo_DietaGeneral(tipoDieta);
-        dino.setPreferencia_Alimento(preferencia);
-        dino.setDomesticable(domesticable);
+        // Crear los controladores fuera del try para poder cerrarlos después
+        ControladorDinosaurios controladorDino = null;
+        ControladorHabitatDino controladorHabitat = null;
 
-        // Controlador de dinosaurios
-        ControladorDinosaurios controlador = new ControladorDinosaurios();
+        try {
+            controladorDino = new ControladorDinosaurios();
+            controladorHabitat = new ControladorHabitatDino();
 
-        // Guardar el dinosaurio
-        if (controlador.crearDino(dino)) {
-            // Ahora crear el hábitat
+            // Crear el dinosaurio
+            Dinosaurios dino = new Dinosaurios();
+            dino.setNombre(nombre);
+            dino.setTipo_DietaGeneral(tipoDieta);
+            dino.setPreferencia_Alimento(preferencia);
+            dino.setDomesticable(domesticable);
+
+            // Guardar el dinosaurio
+            if (!controladorDino.crearDino(dino)) {
+                JOptionPane.showMessageDialog(this, "Error al guardar el dinosaurio",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Crear y guardar el hábitat
             Dino_Habitat dinoHabitat = new Dino_Habitat();
-            dinoHabitat.setDinosaurio(dino); // Relacionar con el dino creado
+            dinoHabitat.setDinosaurio(dino);
             dinoHabitat.setFechaInsertado(new java.util.Date());
-            dinoHabitat.setPorcentaje_Aparicion(100); // Puedes cambiar esto si lo necesitas
+            dinoHabitat.setPorcentaje_Aparicion(100);
             dinoHabitat.setCoordenadas_Aparicion(habitat);
 
-            ControladorHabitatDino controladorHabitat = new ControladorHabitatDino();
-
             if (controladorHabitat.crearHabitat(dinoHabitat)) {
-                JOptionPane.showMessageDialog(this, "Dinosaurio y habitat guardados con exito", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Dinosaurio y habitat guardados correctamente",
+                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Error al guardar el habitat", "Error", JOptionPane.ERROR_MESSAGE);
+                // Intentar eliminar el dinosaurio si falla el hábitat
+                controladorDino.eliminarDinosaurio(dino.getId_Dino());
+                JOptionPane.showMessageDialog(this, "Error al guardar el habitat. El dinosaurio fue eliminado",
+                        "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Error al guardar el dinosaurio", "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            // Cerrar los controladores siempre
+            if (controladorDino != null) {
+                controladorDino.cerrar();
+            }
+            if (controladorHabitat != null) {
+                controladorHabitat.cerrar();
+            }
         }
+        
     }//GEN-LAST:event_guardarActionPerformed
 
     private void habitatDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habitatDinoActionPerformed

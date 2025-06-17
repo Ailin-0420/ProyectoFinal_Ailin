@@ -13,8 +13,8 @@
 
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/arkmino?serverTimezone=UTC"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.password" value="123456"/>
+      <property name="javax.persistence.jdbc.user" value="Ailin"/>
+      <property name="javax.persistence.jdbc.password" value="ailin"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 
       <!-- Configuración Hibernate -->
