@@ -265,7 +265,7 @@ public class ModificarDino extends javax.swing.JFrame {
             }
 
             ControladorDinosaurios controlador = new ControladorDinosaurios();
-            Dinosaurios dino = controlador.obtenerDinoPorId(id);
+            Dinosaurios dino = controlador.buscarDinoPorId(id);
 
             if (dino == null) {
                 JOptionPane.showMessageDialog(this, "No se encontro un dinosaurio con ese ID.", "Error", JOptionPane.ERROR_MESSAGE);
