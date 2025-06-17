@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
   <persistence-unit name="arkmino" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-
     <class>entidades.Dinosaurios</class>
     <class>entidades.Tameos</class>
     <class>entidades.Uso_Dinos</class>
     <class>entidades.Dino_Habitat</class>
-    <class>entidades.Habitats</class>
-
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/arkmino?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="Ailin"/>
       <property name="javax.persistence.jdbc.password" value="ailin"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-
       <!-- Configuración para EclipseLink -->
       <property name="eclipselink.target-database" value="MySQL"/>
       <property name="eclipselink.ddl-generation" value="none"/>
