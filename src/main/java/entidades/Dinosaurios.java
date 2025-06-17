@@ -4,10 +4,7 @@
  */
 package entidades;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,8 +25,6 @@ public class Dinosaurios {
 
     private String nombre;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_DietaGeneral")
     private String tipo_DietaGeneral;
 
     private String preferencia_Alimento;
