@@ -87,5 +87,11 @@ public class ControladorTameos {
             em.close();
         }
     }
+
+    public void cerrar() {
+        if (emf != null && emf.isOpen()) {
+            emf.close(); // Cierra la conexión principal
+        }
+    }
 }  
 

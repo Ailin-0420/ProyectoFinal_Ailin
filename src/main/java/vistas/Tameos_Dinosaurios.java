@@ -4,6 +4,10 @@
  */
 package vistas;
 
+import controladores.ControladorTameos;
+import entidades.Tameos;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ailin
@@ -154,6 +158,60 @@ public class Tameos_Dinosaurios extends javax.swing.JFrame {
 
     private void guardarTameoActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
+        
+        // Obtener valores de los campos
+        String idDinoText = IDAñadirTameo.getText().trim();
+        String metodo = jTextArea1.getText().trim();
+        String tiempoText = horasTameo.getText().trim();
+
+        // Validar campos vacíos
+        if (idDinoText.isEmpty() || metodo.isEmpty() || tiempoText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "Por favor complete todos los campos", 
+                "Campos incompletos", 
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Validar formato numérico
+        int idDino;
+        double tiempo;
+        try {
+            idDino = Integer.parseInt(idDinoText);
+            tiempo = Double.parseDouble(tiempoText);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, 
+                "El ID y el tiempo deben ser valores numéricos", 
+                "Error de formato", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Crear controlador
+        ControladorTameos controlador = new ControladorTameos();
+        
+        try {
+            // Crear objeto Tameo
+            Tameos nuevoTameo = new Tameos();
+            nuevoTameo.setId_Tameo(idDino); // Asignar ID
+            nuevoTameo.setMetodo_Usado(metodo);
+            nuevoTameo.setTiempo(tiempo);
+
+            // Intentar guardar
+            if (controlador.crearTameo(nuevoTameo)) {
+                JOptionPane.showMessageDialog(this, 
+                    "Tameo registrado exitosamente", 
+                    "Éxito", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                    "Error al guardar el tameo", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        } finally {
+            controlador.cerrar();
+        }
     }                                            
 
     /**
