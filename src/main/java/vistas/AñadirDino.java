@@ -77,7 +77,7 @@ public class AñadirDino extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Tipo Dieta:");
 
-        tipoDieta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Herbivoro", "Carnivoro", "Otro" }));
+        tipoDieta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"", "Herbivoro", "Carnivoro", "Otro"}));
         tipoDieta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoDietaActionPerformed(evt);
@@ -143,108 +143,108 @@ public class AñadirDino extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipoDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(guardar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(domesticable))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(preferenciaAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(habitatDino, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(104, 104, 104)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jLabel3)
+                                                        .addComponent(jLabel2)
+                                                        .addComponent(jLabel8))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tipoDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(126, 126, 126)
+                                                .addComponent(guardar))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(domesticable))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(20, 20, 20)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jLabel6)
+                                                        .addComponent(jLabel4))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(preferenciaAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(habitatDino, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(28, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64))
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(tipoDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(preferenciaAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(habitatDino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(domesticable))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(guardar)
-                .addGap(16, 16, 16))
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(7, 7, 7)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel8)
+                                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel3)
+                                        .addComponent(tipoDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(preferenciaAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel6)
+                                        .addComponent(habitatDino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(domesticable))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(guardar)
+                                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>                        
 
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {                                   
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                  
+    }
 
-    private void tipoDietaActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void tipoDietaActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                         
+    }
 
-    private void preferenciaAlimentoActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+    private void preferenciaAlimentoActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                                   
+    }
 
-    private void domesticableActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void domesticableActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                            
+    }
 
-    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {
 
         // Validación de campos
         String idText = this.id.getText().trim();
@@ -254,14 +254,14 @@ public class AñadirDino extends javax.swing.JFrame {
         boolean domesticable = this.domesticable.isSelected();
         String habitat = this.habitatDino.getText().trim();
 
-        // Validar que todos los campos estén completos
+// Validar que todos los campos estén completos
         if (idText.isEmpty() || nombre.isEmpty() || preferencia.isEmpty() || habitat.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos incluyendo el ID",
                     "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Validar que el ID sea numérico
+// Validar que el ID sea numérico
         int id;
         try {
             id = Integer.parseInt(idText);
@@ -271,13 +271,12 @@ public class AñadirDino extends javax.swing.JFrame {
             return;
         }
 
-        // Crear los controladores fuera del try para poder cerrarlos después
         ControladorDinosaurios controladorDino = null;
-        ControladorHabitatDino controladorHabitat = null;
+        ControladorHabitatDino controladorHabitatDino = null;
 
         try {
             controladorDino = new ControladorDinosaurios();
-            controladorHabitat = new ControladorHabitatDino();
+            controladorHabitatDino = new ControladorHabitatDino();
 
             // Verificar si el ID ya existe
             if (controladorDino.buscarDinoPorId(id) != null) {
@@ -301,41 +300,49 @@ public class AñadirDino extends javax.swing.JFrame {
                 return;
             }
 
-            // Crear y guardar el hábitat
-            Dino_Habitat dinoHabitat = new Dino_Habitat();
-            dinoHabitat.setDinosaurio(dino);
-            dinoHabitat.setFechaInsertado(new java.util.Date());
-            dinoHabitat.setPorcentaje_Aparicion(100);
-            dinoHabitat.setCoordenadas_Aparicion(habitat);
+            // Verificar si el hábitat ya existe para ese dinosaurio
+            Dino_Habitat existe = controladorHabitatDino.buscarPorTextoYDino(habitat, dino);
 
-            if (controladorHabitat.crearHabitat(dinoHabitat)) {
-                JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat guardados correctamente",
-                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                this.dispose();
+            if (existe == null) {
+                Dino_Habitat nuevoHabitat = new Dino_Habitat();
+                nuevoHabitat.setDinosaurio(dino);
+                nuevoHabitat.setTexto_Habitat(habitat);
+                nuevoHabitat.setFechaInsertado(new java.util.Date());
+
+                if (controladorHabitatDino.crearHabitat(nuevoHabitat)) {
+                    JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat guardados correctamente",
+                            "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
+                } else {
+                    // Si falla guardar hábitat, eliminar dinosaurio para mantener consistencia
+                    controladorDino.eliminarDinosaurio(dino.getId_Dino());
+                    JOptionPane.showMessageDialog(this, "Error al guardar el hábitat. El dinosaurio fue eliminado",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
             } else {
-                // Intentar eliminar el dinosaurio si falla el hábitat
-                controladorDino.eliminarDinosaurio(dino.getId_Dino());
-                JOptionPane.showMessageDialog(this, "Error al guardar el hábitat. El dinosaurio fue eliminado",
-                        "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El hábitat ya existe para este dinosaurio",
+                        "Aviso", JOptionPane.WARNING_MESSAGE);
+                // Aquí decides si haces algo más, por ejemplo, cerrar el diálogo o permitir cambiar el hábitat
             }
+
         } finally {
-            // Cerrar los controladores siempre
             if (controladorDino != null) {
                 controladorDino.cerrar();
             }
-            if (controladorHabitat != null) {
-                controladorHabitat.cerrar();
+            if (controladorHabitatDino != null) {
+                controladorHabitatDino.cerrar();
             }
         }
-    }                                       
 
-    private void habitatDinoActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    }                                           
+    }
 
-    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    private void habitatDinoActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                      
+    }
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
 
     /**
      * @param args the command line arguments
