@@ -17,8 +17,9 @@ public class ControladorUsoDinos {
 
     private final EntityManagerFactory emf;
 
+    // Constructor: Inicia la conexión con la base de datos al crear el controlador
     public ControladorUsoDinos() {
-        emf = Persistence.createEntityManagerFactory("dinosauriosPU");
+        this.emf = Persistence.createEntityManagerFactory("arkmino"); // "arkmino" = nombre de la BD
     }
 
     public boolean crearUsoDino(Uso_Dinos usoDino) {

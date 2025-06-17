@@ -25,8 +25,9 @@ public class ControladorHabitatDino {
     // Conexion a la base de datos (se usa en todos los metodos)
     private final EntityManagerFactory emf;
 
+    // Constructor: Inicia la conexión con la base de datos al crear el controlador
     public ControladorHabitatDino() {
-        emf = Persistence.createEntityManagerFactory("dinosauriosPU");
+        this.emf = Persistence.createEntityManagerFactory("arkmino"); // "arkmino" = nombre de la BD
     }
 
     /*

@@ -17,8 +17,9 @@ public class ControladorHabitats {
 
     private final EntityManagerFactory emf;
 
+    // Constructor: Inicia la conexiÃ³n con la base de datos al crear el controlador
     public ControladorHabitats() {
-        emf = Persistence.createEntityManagerFactory("dinosauriosPU");
+        this.emf = Persistence.createEntityManagerFactory("arkmino"); // "arkmino" = nombre de la BD
     }
 
     public boolean crearHabitat(Habitats habitat) {
