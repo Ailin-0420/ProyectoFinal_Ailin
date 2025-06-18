@@ -15,6 +15,8 @@ public class HacerCopia extends javax.swing.JFrame {
      */
     public HacerCopia() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**

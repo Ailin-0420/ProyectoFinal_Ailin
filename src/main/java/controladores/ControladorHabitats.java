@@ -24,7 +24,7 @@ public class ControladorHabitats {
         em = emf.createEntityManager();
     }
 
-    public boolean crearHabitatBU(Habitats habitat) {
+    public boolean crearHabitat(Habitats habitat) {
         try {
             em.getTransaction().begin();
             em.persist(habitat);
@@ -34,7 +34,7 @@ public class ControladorHabitats {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            e.printStackTrace(); // O mostrar en un JOptionPane si prefieres
+            e.printStackTrace();
             return false;
         }
     }
@@ -53,7 +53,7 @@ public class ControladorHabitats {
         try {
             return em.find(Habitats.class, id);
         } catch (Exception e) {
-            e.printStackTrace(); // o puedes devolver null directamente sin imprimir
+            e.printStackTrace();
             return null;
         }
     }
@@ -74,37 +74,28 @@ public class ControladorHabitats {
     }
 
     public boolean eliminarHabitat(int id) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager emLocal = emf.createEntityManager();
         try {
-            em.getTransaction().begin();
-            Habitats habitat = em.find(Habitats.class, id);
+            emLocal.getTransaction().begin();
+            Habitats habitat = emLocal.find(Habitats.class, id);
             if (habitat != null) {
-                em.remove(habitat);
-                em.getTransaction().commit();
+                emLocal.remove(habitat);
+                emLocal.getTransaction().commit();
                 return true;
             }
+            emLocal.getTransaction().rollback();
             return false;
         } catch (Exception e) {
             System.out.println("Error al eliminar: " + e.getMessage());
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
+            if (emLocal.getTransaction().isActive()) {
+                emLocal.getTransaction().rollback();
             }
             return false;
         } finally {
-            em.close();
+            emLocal.close();
         }
     }
 
-    public void cerrar() {
-        if (em != null && em.isOpen()) {
-            em.close();
-        }
-        if (emf != null && emf.isOpen()) {
-            emf.close();
-        }
-    }
-
-    // En ControladorHabitats.java
     public List<Habitats> obtenerTodos() {
         return em.createQuery("SELECT h FROM Habitats h", Habitats.class).getResultList();
     }
@@ -115,19 +106,12 @@ public class ControladorHabitats {
         em.getTransaction().commit();
     }
 
-    public boolean crearHabitatBU(Habitats hab) {
-        try {
-            em.getTransaction().begin();
-            em.persist(hab);
-            em.getTransaction().commit();
-            return true;
-        } catch (Exception e) {
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            e.printStackTrace();
-            return false;
+    public void cerrar() {
+        if (em != null && em.isOpen()) {
+            em.close();
+        }
+        if (emf != null && emf.isOpen()) {
+            emf.close();
         }
     }
-
 }
