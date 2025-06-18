@@ -260,7 +260,7 @@ public class ModificarDino extends javax.swing.JFrame {
             String habitat = habitatModificado.getText().trim();
 
             if (nombre.isEmpty() || dieta.isEmpty() || preferencia.isEmpty() || habitat.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -268,7 +268,7 @@ public class ModificarDino extends javax.swing.JFrame {
             Dinosaurios dino = controlador.buscarDinoPorId(id);
 
             if (dino == null) {
-                JOptionPane.showMessageDialog(this, "No se encontro un dinosaurio con ese ID.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se encontro un dinosaurio con ese ID", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -291,7 +291,7 @@ public class ModificarDino extends javax.swing.JFrame {
                     dinoHabitat = new Dino_Habitat();
                     dinoHabitat.setDinosaurio(dino);
                     dinoHabitat.setFechaInsertado(new java.util.Date());
-                    dinoHabitat.setPorcentaje_Aparicion(100); // valor fijo, puedes cambiarlo si quieres
+                    //dinoHabitat.setPorcentaje_Aparicion(100);
                 }
 
                 // Actualizar coordenadas (habitat)
