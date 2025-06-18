@@ -37,6 +37,14 @@ public class Principal extends javax.swing.JFrame {
         modifDino = new javax.swing.JButton();
         verDino = new javax.swing.JButton();
         eliminarDino = new javax.swing.JButton();
+        añadirTameo = new javax.swing.JButton();
+        modificarTameo = new javax.swing.JButton();
+        eliminarTameo = new javax.swing.JButton();
+        verTameo = new javax.swing.JButton();
+        añadirHabitatDino = new javax.swing.JButton();
+        modificarHabitatDino = new javax.swing.JButton();
+        verHabitatDino = new javax.swing.JButton();
+        EliminarHabitatDino = new javax.swing.JButton();
 
         button1.setLabel("button1");
 
@@ -115,27 +123,117 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        añadirTameo.setBackground(new java.awt.Color(255, 255, 255));
+        añadirTameo.setForeground(new java.awt.Color(0, 0, 0));
+        añadirTameo.setText("Añadir tameo");
+        añadirTameo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                añadirTameoActionPerformed(evt);
+            }
+        });
+
+        modificarTameo.setBackground(new java.awt.Color(255, 255, 255));
+        modificarTameo.setForeground(new java.awt.Color(0, 0, 0));
+        modificarTameo.setText("Modificar tameo");
+        modificarTameo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarTameoActionPerformed(evt);
+            }
+        });
+
+        eliminarTameo.setBackground(new java.awt.Color(255, 255, 255));
+        eliminarTameo.setForeground(new java.awt.Color(0, 0, 0));
+        eliminarTameo.setText("Eliminar tameo");
+        eliminarTameo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarTameoActionPerformed(evt);
+            }
+        });
+
+        verTameo.setBackground(new java.awt.Color(255, 255, 255));
+        verTameo.setForeground(new java.awt.Color(0, 0, 0));
+        verTameo.setText("Ver tameo");
+        verTameo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verTameoActionPerformed(evt);
+            }
+        });
+
+        añadirHabitatDino.setBackground(new java.awt.Color(255, 255, 255));
+        añadirHabitatDino.setForeground(new java.awt.Color(0, 0, 0));
+        añadirHabitatDino.setText("Añadir habitat");
+        añadirHabitatDino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                añadirHabitatDinoActionPerformed(evt);
+            }
+        });
+
+        modificarHabitatDino.setBackground(new java.awt.Color(255, 255, 255));
+        modificarHabitatDino.setForeground(new java.awt.Color(0, 0, 0));
+        modificarHabitatDino.setText("Modificar habitat");
+        modificarHabitatDino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarHabitatDinoActionPerformed(evt);
+            }
+        });
+
+        verHabitatDino.setBackground(new java.awt.Color(255, 255, 255));
+        verHabitatDino.setForeground(new java.awt.Color(0, 0, 0));
+        verHabitatDino.setText("Ver habitat");
+        verHabitatDino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verHabitatDinoActionPerformed(evt);
+            }
+        });
+
+        EliminarHabitatDino.setBackground(new java.awt.Color(255, 255, 255));
+        EliminarHabitatDino.setForeground(new java.awt.Color(0, 0, 0));
+        EliminarHabitatDino.setText("Eliminar habitat");
+        EliminarHabitatDino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarHabitatDinoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(77, 77, 77)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(añadirDino))
-                            .addComponent(modifDino)
-                            .addComponent(eliminarDino)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addComponent(verDino))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                                .addComponent(eliminarDino)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(eliminarTameo))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(añadirDino)
+                                    .addComponent(modifDino)
+                                    .addComponent(verDino))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(40, 40, 40)
+                                                .addComponent(añadirTameo))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(51, 51, 51)
+                                                .addComponent(verTameo)))
+                                        .addGap(8, 8, 8))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(modificarTameo)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(añadirHabitatDino, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(modificarHabitatDino, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(verHabitatDino, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(EliminarHabitatDino, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,13 +241,25 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(añadirDino)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(añadirDino)
+                    .addComponent(añadirTameo)
+                    .addComponent(añadirHabitatDino))
                 .addGap(18, 18, 18)
-                .addComponent(modifDino)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(modifDino)
+                    .addComponent(modificarTameo)
+                    .addComponent(modificarHabitatDino))
                 .addGap(18, 18, 18)
-                .addComponent(verDino)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(verDino)
+                    .addComponent(verTameo)
+                    .addComponent(verHabitatDino))
                 .addGap(18, 18, 18)
-                .addComponent(eliminarDino)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eliminarDino)
+                    .addComponent(eliminarTameo)
+                    .addComponent(EliminarHabitatDino))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
 
@@ -162,7 +272,7 @@ public class Principal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -205,6 +315,38 @@ public class Principal extends javax.swing.JFrame {
         dispose();                             // Cierra el frame actual (principal)
     }//GEN-LAST:event_añadirDinoActionPerformed
 
+    private void añadirTameoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirTameoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_añadirTameoActionPerformed
+
+    private void modificarTameoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarTameoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarTameoActionPerformed
+
+    private void eliminarTameoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarTameoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarTameoActionPerformed
+
+    private void verTameoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTameoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verTameoActionPerformed
+
+    private void añadirHabitatDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirHabitatDinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_añadirHabitatDinoActionPerformed
+
+    private void modificarHabitatDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarHabitatDinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarHabitatDinoActionPerformed
+
+    private void verHabitatDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verHabitatDinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verHabitatDinoActionPerformed
+
+    private void EliminarHabitatDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarHabitatDinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EliminarHabitatDinoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -241,15 +383,23 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton EliminarHabitatDino;
     private javax.swing.JButton añadirDino;
+    private javax.swing.JButton añadirHabitatDino;
+    private javax.swing.JButton añadirTameo;
     private java.awt.Button button1;
     private javax.swing.JButton eliminarDino;
+    private javax.swing.JButton eliminarTameo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton modifDino;
+    private javax.swing.JButton modificarHabitatDino;
+    private javax.swing.JButton modificarTameo;
     private javax.swing.JButton verDino;
+    private javax.swing.JButton verHabitatDino;
+    private javax.swing.JButton verTameo;
     // End of variables declaration//GEN-END:variables
 }

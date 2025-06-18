@@ -36,7 +36,6 @@ public class Dino_Habitat {
 
     private int porcentaje_Aparicion;
 
-    private String coordenadas_Aparicion;
 
     private String texto_Habitat;
 
@@ -84,11 +83,4 @@ public class Dino_Habitat {
         this.porcentaje_Aparicion = porcentaje_Aparicion;
     }
 
-    public String getCoordenadas_Aparicion() {
-        return coordenadas_Aparicion;
-    }
-
-    public void setCoordenadas_Aparicion(String coordenadas_Aparicion) {
-        this.coordenadas_Aparicion = coordenadas_Aparicion;
-    }
 }

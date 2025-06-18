@@ -294,9 +294,6 @@ public class ModificarDino extends javax.swing.JFrame {
                     //dinoHabitat.setPorcentaje_Aparicion(100);
                 }
 
-                // Actualizar coordenadas (habitat)
-                dinoHabitat.setCoordenadas_Aparicion(habitat);
-
                 boolean habitatActualizado = false;
                 if (dinoHabitat.getId_HabitatDino() == 0) {
                     controladorHabitat.crearHabitat(dinoHabitat);
