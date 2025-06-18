@@ -5,6 +5,7 @@
 package controladores;
 
 import entidades.Dinosaurios;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -134,6 +135,33 @@ public class ControladorDinosaurios {
     public void cerrar() {
         if (emf != null && emf.isOpen()) {
             emf.close(); // Cierra la conexión principal
+        }
+    }
+
+    // PARTE DE LA COPIA DE SEGURIDAD ------------------------------------------
+    // En ControladorDinosaurios.java
+    public List<Dinosaurios> obtenerTodos() {
+        return em.createQuery("SELECT d FROM Dinosaurios d", Dinosaurios.class).getResultList();
+    }
+
+    public void eliminarTodos() {
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Dinosaurios").executeUpdate();
+        em.getTransaction().commit();
+    }
+
+    public boolean crearDinosaurio(Dinosaurios dino) {
+        try {
+            em.getTransaction().begin();
+            em.persist(dino);
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return false;
         }
     }
 }

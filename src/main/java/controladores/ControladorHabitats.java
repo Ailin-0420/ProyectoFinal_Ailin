@@ -5,6 +5,7 @@
 package controladores;
 
 import entidades.Habitats;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -23,7 +24,7 @@ public class ControladorHabitats {
         em = emf.createEntityManager();
     }
 
-    public boolean crearHabitat(Habitats habitat) {
+    public boolean crearHabitatBU(Habitats habitat) {
         try {
             em.getTransaction().begin();
             em.persist(habitat);
@@ -102,4 +103,31 @@ public class ControladorHabitats {
             emf.close();
         }
     }
+
+    // En ControladorHabitats.java
+    public List<Habitats> obtenerTodos() {
+        return em.createQuery("SELECT h FROM Habitats h", Habitats.class).getResultList();
+    }
+
+    public void eliminarTodos() {
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Habitats").executeUpdate();
+        em.getTransaction().commit();
+    }
+
+    public boolean crearHabitatBU(Habitats hab) {
+        try {
+            em.getTransaction().begin();
+            em.persist(hab);
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
