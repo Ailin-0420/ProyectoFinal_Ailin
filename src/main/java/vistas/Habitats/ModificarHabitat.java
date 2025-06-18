@@ -37,7 +37,7 @@ public class ModificarHabitat extends javax.swing.JFrame {
         IDHabitatModf = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         textoModf = new javax.swing.JTextField();
-        guardarDinoModf = new javax.swing.JButton();
+        guardarHabitatModf = new javax.swing.JButton();
         volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,13 +69,13 @@ public class ModificarHabitat extends javax.swing.JFrame {
             }
         });
 
-        guardarDinoModf.setBackground(new java.awt.Color(255, 255, 255));
-        guardarDinoModf.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
-        guardarDinoModf.setForeground(new java.awt.Color(0, 0, 0));
-        guardarDinoModf.setText("Guardar");
-        guardarDinoModf.addActionListener(new java.awt.event.ActionListener() {
+        guardarHabitatModf.setBackground(new java.awt.Color(255, 255, 255));
+        guardarHabitatModf.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
+        guardarHabitatModf.setForeground(new java.awt.Color(0, 0, 0));
+        guardarHabitatModf.setText("Guardar");
+        guardarHabitatModf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardarDinoModfActionPerformed(evt);
+                guardarHabitatModfActionPerformed(evt);
             }
         });
 
@@ -108,7 +108,7 @@ public class ModificarHabitat extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(guardarDinoModf)
+                                .addComponent(guardarHabitatModf)
                                 .addGap(47, 47, 47)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(volver)
@@ -134,7 +134,7 @@ public class ModificarHabitat extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(guardarDinoModf)
+                    .addComponent(guardarHabitatModf)
                     .addComponent(volver))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
@@ -157,13 +157,13 @@ public class ModificarHabitat extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textoModfActionPerformed
 
-    private void guardarDinoModfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarDinoModfActionPerformed
+    private void guardarHabitatModfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarHabitatModfActionPerformed
         // TODO add your handling code here:
         try {
             int idHabitat = Integer.parseInt(IDHabitatModf.getText().trim());
             String textoHabitat = textoModf.getText().trim();
 
-            if (textoHabitat.isEmpty() || idHabitat > 0) {
+            if (textoHabitat.isEmpty() || idHabitat <= 0) {
                 JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -176,7 +176,6 @@ public class ModificarHabitat extends javax.swing.JFrame {
                 return;
             }
 
-            // Actualizar datos del tameo
             habitat.setTexto_Habitat(textoHabitat);
 
             boolean actualizado = controlador.actualizarHabitat(habitat);
@@ -184,13 +183,14 @@ public class ModificarHabitat extends javax.swing.JFrame {
             if (actualizado) {
                 JOptionPane.showMessageDialog(this, "Habitat actualizado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Error al actualizar el tameo", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Error al actualizar el habitat", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El ID debe ser un número válido", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_guardarDinoModfActionPerformed
+
+    }//GEN-LAST:event_guardarHabitatModfActionPerformed
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
@@ -245,7 +245,7 @@ public class ModificarHabitat extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField IDHabitatModf;
-    private javax.swing.JButton guardarDinoModf;
+    private javax.swing.JButton guardarHabitatModf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

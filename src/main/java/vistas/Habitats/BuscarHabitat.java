@@ -36,7 +36,7 @@ public class BuscarHabitat extends javax.swing.JFrame {
         buscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        idTameoBuscar = new javax.swing.JTextField();
+        idHabitatBuscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,9 +65,9 @@ public class BuscarHabitat extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
 
-        idTameoBuscar.addActionListener(new java.awt.event.ActionListener() {
+        idHabitatBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idTameoBuscarActionPerformed(evt);
+                idHabitatBuscarActionPerformed(evt);
             }
         });
 
@@ -81,7 +81,7 @@ public class BuscarHabitat extends javax.swing.JFrame {
                         .addGap(138, 138, 138)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(idTameoBuscar)))
+                            .addComponent(idHabitatBuscar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addComponent(jLabel3))
@@ -103,7 +103,7 @@ public class BuscarHabitat extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(idTameoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(idHabitatBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(buscar)
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -126,12 +126,12 @@ public class BuscarHabitat extends javax.swing.JFrame {
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         // TODO add your handling code here:
         try {
-            int id = Integer.parseInt(idTameoBuscar.getText().trim());
+            int id = Integer.parseInt(idHabitatBuscar.getText().trim());
             ControladorHabitats controlador = new ControladorHabitats();
             Habitats habitat = controlador.buscarHabitatPorId(id);
 
             if (habitat != null) {
-                VerTameo frame = new VerTameo(id);
+                VerHabitat frame = new VerHabitat(id);
                 frame.setLocationRelativeTo(null);
                 frame.setResizable(true);
                 frame.setVisible(true);
@@ -145,9 +145,9 @@ public class BuscarHabitat extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buscarActionPerformed
 
-    private void idTameoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTameoBuscarActionPerformed
+    private void idHabitatBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idHabitatBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_idTameoBuscarActionPerformed
+    }//GEN-LAST:event_idHabitatBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,7 +249,7 @@ public class BuscarHabitat extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar;
-    private javax.swing.JTextField idTameoBuscar;
+    private javax.swing.JTextField idHabitatBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -32,7 +32,7 @@ public class VerHabitat extends javax.swing.JFrame {
         if (habitat != null) {
             nombreHabitat.setText(habitat.getTexto_Habitat());
         } else {
-            JOptionPane.showMessageDialog(this, "No se encontró un dinosaurio con ese nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontró un habitat con ese id", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

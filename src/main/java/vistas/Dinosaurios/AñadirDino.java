@@ -322,7 +322,7 @@ public class AñadirDino extends javax.swing.JFrame {
                 return;
             }
 
-            JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat guardados correctamente",
+            JOptionPane.showMessageDialog(this, "Dinosaurio guardado correctamente",
                     "Éxito", JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos();
 

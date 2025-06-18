@@ -141,7 +141,7 @@ public class EliminarHabitat extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "Habitat eliminado correctamente");
                 IDaBorrar.setText(""); // limpia el campo
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "No se encontro el habitat con ese ID.");
+                javax.swing.JOptionPane.showMessageDialog(this, "No se encontro el habitat con ese ID");
             }
         } catch (NumberFormatException e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Introduce un numero valido como ID");

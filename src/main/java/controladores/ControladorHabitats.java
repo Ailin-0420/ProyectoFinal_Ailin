@@ -56,9 +56,8 @@ public class ControladorHabitats {
             return null;
         }
     }
-    
+
     public boolean actualizarHabitat(Habitats habitat) {
-        EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
             em.merge(habitat);
@@ -70,11 +69,9 @@ public class ControladorHabitats {
                 em.getTransaction().rollback();
             }
             return false;
-        } finally {
-            em.close();
         }
     }
-    
+
     public boolean eliminarHabitat(int id) {
         EntityManager em = emf.createEntityManager();
         try {
