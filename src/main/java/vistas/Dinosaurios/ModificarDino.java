@@ -293,7 +293,7 @@ public class ModificarDino extends javax.swing.JFrame {
                 if (dinoHabitat == null) {
                     // Crear nuevo hábitat si no existe
                     dinoHabitat = new Dino_Habitat();
-                    dinoHabitat.setDinosaurio(dino);
+                    dinoHabitat.setDino(dino);
                     dinoHabitat.setFechaInsertado(new java.util.Date());
                     // Aquí se asigna el nombre o descripción del hábitat
                     dinoHabitat.setTexto_Habitat(habitat);

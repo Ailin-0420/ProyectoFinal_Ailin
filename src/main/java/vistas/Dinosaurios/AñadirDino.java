@@ -25,9 +25,9 @@ public class AñadirDino extends javax.swing.JFrame {
         initComponents();
     }
     
-    // El método limpiarCampos() resetea todos los campos del formulario para
-    // que queden vacíos o en su estado inicial, facilitando ingresar un nuevo
-    // dinosaurio sin cerrar la ventana.
+    // El método limpiarCampos() resetea todos los campos del frame para
+    // que queden vacíos, facilitando ingresar un nuevo dinosaurio 
+    // sin cerrar la ventana
     private void limpiarCampos() {
     nombre.setText("");
     preferenciaAlimento.setText("");
@@ -290,7 +290,7 @@ public class AñadirDino extends javax.swing.JFrame {
             if (habitatExistente == null) {
                 // Si no existe, lo creamos
                 Dino_Habitat nuevoHabitat = new Dino_Habitat();
-                nuevoHabitat.setDinosaurio(dino);
+                nuevoHabitat.setDino(dino);
                 nuevoHabitat.setTexto_Habitat(habitat);
                 nuevoHabitat.setFechaInsertado(new java.util.Date());
 

@@ -30,25 +30,13 @@ public class Dino_Habitat {
 
     @ManyToOne
     @JoinColumn(name = "id_Dino")
-    private Dinosaurios dinosaurio;
+    private Dinosaurios dino;
 
     @Temporal(TemporalType.DATE)
     private Date fechaInsertado;
 
     @Column(unique = true)
     private String texto_Habitat;
-
-    public String getTexto_Habitat() {
-        return texto_Habitat;
-    }
-
-    public void setTexto_Habitat(String texto_Habitat) {
-        this.texto_Habitat = texto_Habitat;
-    }
-
-    // Constructor, getters y setters
-    public Dino_Habitat() {
-    }
 
     public int getId_HabitatDino() {
         return id_HabitatDino;
@@ -58,12 +46,12 @@ public class Dino_Habitat {
         this.id_HabitatDino = id_HabitatDino;
     }
 
-    public Dinosaurios getDinosaurio() {
-        return dinosaurio;
+    public Dinosaurios getDino() {
+        return dino;
     }
 
-    public void setDinosaurio(Dinosaurios dinosaurio) {
-        this.dinosaurio = dinosaurio;
+    public void setDino(Dinosaurios dino) {
+        this.dino = dino;
     }
 
     public Date getFechaInsertado() {
@@ -72,5 +60,20 @@ public class Dino_Habitat {
 
     public void setFechaInsertado(Date fechaInsertado) {
         this.fechaInsertado = fechaInsertado;
+    }
+
+    public String getTexto_Habitat() {
+        return texto_Habitat;
+    }
+
+    public void setTexto_Habitat(String texto_Habitat) {
+        this.texto_Habitat = texto_Habitat;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Habitat =").append(texto_Habitat);
+        return sb.toString();
     }
 }

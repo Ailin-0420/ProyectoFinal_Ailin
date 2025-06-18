@@ -35,7 +35,7 @@ public class ControladorHabitatDino {
      */
     public boolean crearHabitat(Dino_Habitat habitat) {
         // Validacion simple
-        if (habitat.getDinosaurio() == null) {
+        if (habitat.getDino()== null) {
             System.out.println("Error: El habitat debe tener un dinosaurio asociado");
             return false;
         }

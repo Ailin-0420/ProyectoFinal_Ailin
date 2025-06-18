@@ -4,10 +4,12 @@
  */
 package vistas;
 
+import vistas.Tameos.AñadirTameo;
 import vistas.Dinosaurios.VerDino;
 import vistas.Dinosaurios.ModificarDino;
 import vistas.Dinosaurios.EliminarDino;
 import vistas.Dinosaurios.AñadirDino;
+import vistas.Tameos.EliminarTameo;
 
 /**
  *
@@ -336,6 +338,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void eliminarTameoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarTameoActionPerformed
         // TODO add your handling code here:
+        EliminarTameo frame = new EliminarTameo();
+        frame.setLocationRelativeTo(null);     // Centrar en pantalla
+        frame.setResizable(false);             // No redimensionable
+        frame.setVisible(true);
+        dispose(); 
     }//GEN-LAST:event_eliminarTameoActionPerformed
 
     private void verTameoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTameoActionPerformed

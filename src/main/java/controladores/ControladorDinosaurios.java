@@ -61,7 +61,7 @@ public class ControladorDinosaurios {
             em.close(); // Cierra la conexión
         }
     }
-    
+
     /*
      * BUSCA UN DINOSAURIO POR SU NOMBRE
      */
@@ -69,7 +69,8 @@ public class ControladorDinosaurios {
         EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<Dinosaurios> query = em.createQuery(
-                    "SELECT d FROM Dinosaurios d WHERE d.nombre = :nombre", Dinosaurios.class);
+                    "SELECT d FROM Dinosaurios d LEFT JOIN FETCH d.habitat WHERE d.nombre = :nombre",
+                    Dinosaurios.class);
             query.setParameter("nombre", nombre);
             return query.getSingleResult();
         } catch (NoResultException e) {
@@ -78,6 +79,7 @@ public class ControladorDinosaurios {
             em.close();
         }
     }
+
 
     /*
      * ACTUALIZA LOS DATOS DE UN DINOSAURIO EXISTENTE

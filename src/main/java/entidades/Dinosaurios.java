@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,7 +33,7 @@ public class Dinosaurios {
 
     private boolean domesticable;
 
-    @OneToOne(mappedBy = "dinosaurio")
+    @OneToOne(mappedBy = "dino")
     private Dino_Habitat habitat;
 
     public Dinosaurios() {
@@ -44,7 +46,7 @@ public class Dinosaurios {
         this.preferencia_Alimento = preferencia_Alimento;
         this.domesticable = domesticable;
         this.habitat = habitat;
-    } 
+    }
 
     public int getId_Dino() {
         return id_Dino;
