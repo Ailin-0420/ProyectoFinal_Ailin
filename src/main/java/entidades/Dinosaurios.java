@@ -98,12 +98,7 @@ public class Dinosaurios {
 
     @Override
     public String toString() {
-        return "Dinosaurios{"
-                + "id_Dino=" + id_Dino
-                + ", nombre='" + nombre + '\''
-                + ", tipo_DietaGeneral=" + tipo_DietaGeneral
-                + ", preferencia_Alimento='" + preferencia_Alimento + '\''
-                + ", domesticable=" + domesticable
+        return "Dinosaurio = '" + nombre
                 + '}';
     }
 }

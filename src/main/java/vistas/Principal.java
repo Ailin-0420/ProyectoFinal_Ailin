@@ -9,7 +9,10 @@ import vistas.Dinosaurios.VerDino;
 import vistas.Dinosaurios.ModificarDino;
 import vistas.Dinosaurios.EliminarDino;
 import vistas.Dinosaurios.AñadirDino;
+import vistas.Tameos.BuscarTameo;
 import vistas.Tameos.EliminarTameo;
+import vistas.Tameos.ModificarTameo;
+import vistas.Tameos.VerTameo;
 
 /**
  *
@@ -334,6 +337,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void modificarTameoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarTameoActionPerformed
         // TODO add your handling code here:
+        ModificarTameo frame = new ModificarTameo();
+        frame.setLocationRelativeTo(null);     // Centrar en pantalla
+        frame.setResizable(false);             // No redimensionable
+        frame.setVisible(true);
+        dispose();  
     }//GEN-LAST:event_modificarTameoActionPerformed
 
     private void eliminarTameoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarTameoActionPerformed
@@ -347,6 +355,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void verTameoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTameoActionPerformed
         // TODO add your handling code here:
+        BuscarTameo frame = new BuscarTameo();
+        frame.setLocationRelativeTo(null);     // Centrar en pantalla
+        frame.setResizable(false);             // No redimensionable
+        frame.setVisible(true);
+        dispose();      
     }//GEN-LAST:event_verTameoActionPerformed
 
     private void añadirHabitatDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirHabitatDinoActionPerformed

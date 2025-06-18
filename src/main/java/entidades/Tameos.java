@@ -46,4 +46,13 @@ public class Tameos {
 
     public double getTiempo() { return tiempo; }
     public void setTiempo(double tiempo) { this.tiempo = tiempo; }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Tameos{");
+        sb.append("metodo_Usado=").append(metodo_Usado);
+        sb.append('}');
+        return sb.toString();
+    }
 }
