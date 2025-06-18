@@ -6,8 +6,10 @@ package vistas.Dinosaurios;
 
 import controladores.ControladorDinosaurios;
 import controladores.ControladorHabitatDino;
+import controladores.ControladorHabitats;
 import entidades.Dino_Habitat;
 import entidades.Dinosaurios;
+import entidades.Habitats;
 import javax.swing.JOptionPane;
 import vistas.Principal;
 
@@ -55,7 +57,7 @@ public class ModificarDino extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("URW Gothic", 3, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Ink Free", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Modificar Dino");
 
@@ -152,9 +154,6 @@ public class ModificarDino extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addComponent(volver))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -172,24 +171,26 @@ public class ModificarDino extends javax.swing.JFrame {
                                     .addComponent(prefAlimentoModf, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(habitatModificado, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(domesticableModf)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nombreModf, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dietaModf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(IDaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel4))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nombreModf, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(dietaModf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(IDaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(44, 44, 44)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(IDaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -217,14 +218,14 @@ public class ModificarDino extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(volver)
                     .addComponent(guardarDinoModf))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,9 +263,9 @@ public class ModificarDino extends javax.swing.JFrame {
             String dieta = (String) dietaModf.getSelectedItem();
             String preferencia = prefAlimentoModf.getText().trim();
             boolean domesticable = domesticableModf.isSelected();
-            String habitat = habitatModificado.getText().trim();
+            String habitatTexto = habitatModificado.getText().trim();
 
-            if (nombre.isEmpty() || dieta.isEmpty() || preferencia.isEmpty() || habitat.isEmpty()) {
+            if (nombre.isEmpty() || dieta.isEmpty() || preferencia.isEmpty() || habitatTexto.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -273,7 +274,7 @@ public class ModificarDino extends javax.swing.JFrame {
             Dinosaurios dino = controlador.buscarDinoPorId(id);
 
             if (dino == null) {
-                JOptionPane.showMessageDialog(this, "No se encontro un dinosaurio con ese ID", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se encontró un dinosaurio con ese ID", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -285,55 +286,69 @@ public class ModificarDino extends javax.swing.JFrame {
 
             boolean actualizado = controlador.actualizarDino(dino);
 
-            if (actualizado) {
-                ControladorHabitatDino controladorHabitat = new ControladorHabitatDino();
+            if (!actualizado) {
+                JOptionPane.showMessageDialog(this, "Error al actualizar el dinosaurio.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-                Dino_Habitat dinoHabitat = controladorHabitat.obtenerHabitatPorDino(dino);
+            // Controlador para hábitats
+            ControladorHabitats controladorHabitats = new ControladorHabitats();
+            Habitats habitatExistente = controladorHabitats.buscarHabitatPorNombre(habitatTexto);
 
-                if (dinoHabitat == null) {
-                    // Crear nuevo hábitat si no existe
-                    dinoHabitat = new Dino_Habitat();
-                    dinoHabitat.setDino(dino);
-                    dinoHabitat.setFechaInsertado(new java.util.Date());
-                    // Aquí se asigna el nombre o descripción del hábitat
-                    dinoHabitat.setTexto_Habitat(habitat);
-                    // Si tienes otro campo, actualizar también
+            if (habitatExistente == null) {
+                // Crear nuevo hábitat si no existe
+                Habitats nuevoHabitat = new Habitats();
+                nuevoHabitat.setTexto_Habitat(habitatTexto);
 
-                    boolean habitatCreado = controladorHabitat.crearHabitat(dinoHabitat);
+                boolean habitatCreado = controladorHabitats.crearHabitat(nuevoHabitat);
 
-                    if (habitatCreado) {
-                        // Asignar el hábitat al dino tras crearlo
-                        dino.setHabitatDino(dinoHabitat);
-                        JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat creados con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                        this.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Error al crear el hábitat.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
+                if (!habitatCreado) {
+                    JOptionPane.showMessageDialog(this, "Error al guardar el hábitat en la tabla Habitats", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                habitatExistente = nuevoHabitat;
+            }
 
+            // Ahora trabajar con Dino_Habitat
+            ControladorHabitatDino controladorHabitat = new ControladorHabitatDino();
+            Dino_Habitat dinoHabitat = controladorHabitat.obtenerHabitatPorDino(dino);
+
+            if (dinoHabitat == null) {
+                // Crear nueva relación
+                dinoHabitat = new Dino_Habitat();
+                dinoHabitat.setDino(dino);
+                dinoHabitat.setHabitat(habitatExistente);
+                dinoHabitat.setFechaInsertado(new java.util.Date());
+
+                boolean habitatCreadoDino = controladorHabitat.crearHabitat(dinoHabitat);
+
+                if (habitatCreadoDino) {
+                    dino.setHabitatDino(dinoHabitat);
+                    JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat creados con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
                 } else {
-                    // Actualizar el hábitat existente con el nuevo texto
-                    dinoHabitat.setTexto_Habitat(habitat);
-                    // Si hay otros campos que actualizar, hazlo aquí
-
-                    boolean habitatActualizado = controladorHabitat.actualizarHabitat(dinoHabitat);
-
-                    if (habitatActualizado) {
-                        // Asignar el hábitat actualizado al dino
-                        dino.setHabitatDino(dinoHabitat);
-                        JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat actualizados con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                        this.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Error al actualizar el hábitat.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
+                    JOptionPane.showMessageDialog(this, "Error al crear el hábitat en Dino_Habitat.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             } else {
-                JOptionPane.showMessageDialog(this, "Error al actualizar el dinosaurio.", "Error", JOptionPane.ERROR_MESSAGE);
+                // Actualizar relación existente
+                dinoHabitat.setHabitat(habitatExistente);
+                dinoHabitat.setFechaInsertado(new java.util.Date());
+
+                boolean habitatActualizado = controladorHabitat.actualizarHabitat(dinoHabitat);
+
+                if (habitatActualizado) {
+                    dino.setHabitatDino(dinoHabitat);
+                    JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat actualizados con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al actualizar el hábitat en Dino_Habitat.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El ID debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_guardarDinoModfActionPerformed
 
     private void habitatModificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habitatModificadoActionPerformed

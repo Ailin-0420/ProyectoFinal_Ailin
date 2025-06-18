@@ -6,8 +6,10 @@ package vistas.Dinosaurios;
 
 import controladores.ControladorDinosaurios;
 import controladores.ControladorHabitatDino;
+import controladores.ControladorHabitats;
 import entidades.Dino_Habitat;
 import entidades.Dinosaurios;
+import entidades.Habitats;
 import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import vistas.Principal;
@@ -24,17 +26,17 @@ public class AñadirDino extends javax.swing.JFrame {
     public AñadirDino() {
         initComponents();
     }
-    
+
     // El método limpiarCampos() resetea todos los campos del frame para
     // que queden vacíos, facilitando ingresar un nuevo dinosaurio 
     // sin cerrar la ventana
     private void limpiarCampos() {
-    nombre.setText("");
-    preferenciaAlimento.setText("");
-    habitatDino.setText("");
-    domesticable.setSelected(false);
-    tipoDieta.setSelectedIndex(0);
-}
+        nombre.setText("");
+        preferenciaAlimento.setText("");
+        habitatDino.setText("");
+        domesticable.setSelected(false);
+        tipoDieta.setSelectedIndex(0);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,7 +66,7 @@ public class AñadirDino extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("URW Gothic", 3, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Ink Free", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Añadir Dino");
 
@@ -162,9 +164,6 @@ public class AñadirDino extends javax.swing.JFrame {
                             .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tipoDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -184,11 +183,15 @@ public class AñadirDino extends javax.swing.JFrame {
                         .addGap(42, 42, 42)
                         .addComponent(volver)))
                 .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(44, 44, 44)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -254,23 +257,25 @@ public class AñadirDino extends javax.swing.JFrame {
         String tipoDieta = (String) this.tipoDieta.getSelectedItem();
         String preferencia = preferenciaAlimento.getText().trim();
         boolean domesticable = this.domesticable.isSelected();
-        String habitat = this.habitatDino.getText().trim();
+        String habitatTexto = this.habitatDino.getText().trim();
 
         // Validar que todos los campos estén completos
-        if (nombre.isEmpty() || preferencia.isEmpty() || habitat.isEmpty()) {
+        if (nombre.isEmpty() || preferencia.isEmpty() || habitatTexto.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos",
                     "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         ControladorDinosaurios controladorDino = null;
+        ControladorHabitats controladorHabitats = null;
         ControladorHabitatDino controladorHabitatDino = null;
 
         try {
             controladorDino = new ControladorDinosaurios();
+            controladorHabitats = new ControladorHabitats();
             controladorHabitatDino = new ControladorHabitatDino();
 
-            // Crear el dinosaurio con ID
+            // Crear el dinosaurio
             Dinosaurios dino = new Dinosaurios();
             dino.setNombre(nombre);
             dino.setTipo_DietaGeneral(tipoDieta);
@@ -284,35 +289,49 @@ public class AñadirDino extends javax.swing.JFrame {
                 return;
             }
 
-            // Verificar si el hábitat ya existe
-            Dino_Habitat habitatExistente = controladorHabitatDino.buscarPorTexto(habitat);
+            // Verificar si el hábitat ya existe en la tabla Habitats
+            Habitats habitatExistente = controladorHabitats.buscarHabitatPorNombre(habitatTexto);
 
             if (habitatExistente == null) {
-                // Si no existe, lo creamos
-                Dino_Habitat nuevoHabitat = new Dino_Habitat();
-                nuevoHabitat.setDino(dino);
-                nuevoHabitat.setTexto_Habitat(habitat);
-                nuevoHabitat.setFechaInsertado(new java.util.Date());
+                // No existe el hábitat, lo creamos
+                Habitats nuevoHabitat = new Habitats();
+                nuevoHabitat.setTexto_Habitat(habitatTexto);
 
-                if (controladorHabitatDino.crearHabitat(nuevoHabitat)) {
-                    JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat guardados correctamente",
-                            "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    // Ya no cerramos el frame
-                    limpiarCampos();
-                } else {
+                if (!controladorHabitats.crearHabitat(nuevoHabitat)) {
+                    // Error creando hábitat, eliminar dinosaurio creado antes para mantener integridad
                     controladorDino.eliminarDinosaurio(dino.getId_Dino());
-                    JOptionPane.showMessageDialog(this, "Error al asociar al hábitat. El dinosaurio fue eliminado",
+                    JOptionPane.showMessageDialog(this, "Error al guardar el hábitat. Se eliminó el dinosaurio.",
                             "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "El dinosaurio fue guardado",
-                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                limpiarCampos();
+                habitatExistente = nuevoHabitat; // Ahora el hábitat es el que acabamos de crear
             }
 
-        } catch (HeadlessException he) {
-            System.out.println("Hola");
+            // Crear la relación Dino_Habitat con el dinosaurio y el hábitat existente o recién creado
+            Dino_Habitat dinoHabitat = new Dino_Habitat();
+            dinoHabitat.setDino(dino);
+            dinoHabitat.setHabitat(habitatExistente);  // Aquí se asigna la entidad Habitats
+            dinoHabitat.setFechaInsertado(new java.util.Date());
+
+            if (!controladorHabitatDino.crearHabitat(dinoHabitat)) {
+                // Error creando la relación, eliminar dinosaurio y posiblemente el hábitat recién creado
+                controladorDino.eliminarDinosaurio(dino.getId_Dino());
+                // Opcional: eliminar hábitat solo si fue creado recién (debes implementar lógica si quieres)
+                JOptionPane.showMessageDialog(this, "Error al asociar el hábitat al dinosaurio. Se eliminó el dinosaurio.",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat guardados correctamente",
+                    "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
+
     }//GEN-LAST:event_guardarActionPerformed
 
     private void habitatDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habitatDinoActionPerformed

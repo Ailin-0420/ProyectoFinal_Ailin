@@ -24,7 +24,7 @@ public class VerDinoID extends javax.swing.JFrame {
             buscarYMostrarDino(id);
         }
     }
-    
+
     // constructor vacio para el main
     private VerDinoID() {
     }
@@ -35,13 +35,22 @@ public class VerDinoID extends javax.swing.JFrame {
 
         if (dino != null) {
             nombre.setText(dino.getNombre());
-            tipoDieta.setText(dino.getNombre());
-            preferenciaAlimento.setText(dino.getTipo_DietaGeneral());
-            habitat.setText(dino.getHabitat().toString());
-            domesticable.setText(dino.isDomesticable() ? "Si" : "No");
+            tipoDieta.setText(dino.getTipo_DietaGeneral());
+            preferenciaAlimento.setText(dino.getPreferencia_Alimento());
+
+            // Mostrar texto del hábitat si existe la relación y el hábitat
+            if (dino.getHabitatDino() != null && dino.getHabitatDino().getHabitat() != null) {
+                habitat.setText(dino.getHabitatDino().getHabitat().getTexto_Habitat());
+            } else {
+                habitat.setText("Sin hábitat asignado");
+            }
+
+            domesticable.setText(dino.isDomesticable() ? "Sí" : "No");
         } else {
-            JOptionPane.showMessageDialog(this, "Dinosaurio no encontrado");
+            JOptionPane.showMessageDialog(this, "No se encontró un dinosaurio con ese nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+            this.dispose();
         }
+
     }
 
     /**
@@ -71,7 +80,7 @@ public class VerDinoID extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("URW Gothic", 3, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Ink Free", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Ver Dino por ID");
 
@@ -146,29 +155,31 @@ public class VerDinoID extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(141, 141, 141)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel7))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(nombre)
-                                .addComponent(tipoDieta)
-                                .addComponent(preferenciaAlimento)
-                                .addComponent(domesticable, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(115, 115, 115)
-                            .addComponent(volver))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addGap(18, 18, 18)
-                            .addComponent(habitat)))
-                    .addComponent(jLabel1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nombre)
+                            .addComponent(tipoDieta)
+                            .addComponent(preferenciaAlimento)
+                            .addComponent(domesticable, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(volver))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(habitat)))
                 .addContainerGap(236, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,8 +224,8 @@ public class VerDinoID extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    
+
+
     private void tipoDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoDietaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipoDietaActionPerformed

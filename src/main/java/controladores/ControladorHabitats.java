@@ -57,6 +57,24 @@ public class ControladorHabitats {
         }
     }
     
+    public boolean actualizarHabitat(Habitats habitat) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(habitat);
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al actualizar: " + e.getMessage());
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            return false;
+        } finally {
+            em.close();
+        }
+    }
+    
     public boolean eliminarHabitat(int id) {
         EntityManager em = emf.createEntityManager();
         try {

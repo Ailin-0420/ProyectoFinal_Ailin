@@ -26,23 +26,24 @@ public class Dino_Habitat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_HabitatDino;
+    private Integer id_HabitatDino;
 
     @ManyToOne
     @JoinColumn(name = "id_Dino")
     private Dinosaurios dino;
 
+    @ManyToOne
+    @JoinColumn(name = "id_Habitat")
+    private Habitats habitat;
+
     @Temporal(TemporalType.DATE)
     private Date fechaInsertado;
 
-    @Column(unique = true)
-    private String texto_Habitat;
-
-    public int getId_HabitatDino() {
+    public Integer getId_HabitatDino() {
         return id_HabitatDino;
     }
 
-    public void setId_HabitatDino(int id_HabitatDino) {
+    public void setId_HabitatDino(Integer id_HabitatDino) {
         this.id_HabitatDino = id_HabitatDino;
     }
 
@@ -54,26 +55,19 @@ public class Dino_Habitat {
         this.dino = dino;
     }
 
+    public Habitats getHabitat() {
+        return habitat;
+    }
+
+    public void setHabitat(Habitats habitat) {
+        this.habitat = habitat;
+    }
+
     public Date getFechaInsertado() {
         return fechaInsertado;
     }
 
     public void setFechaInsertado(Date fechaInsertado) {
         this.fechaInsertado = fechaInsertado;
-    }
-
-    public String getTexto_Habitat() {
-        return texto_Habitat;
-    }
-
-    public void setTexto_Habitat(String texto_Habitat) {
-        this.texto_Habitat = texto_Habitat;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Habitat =").append(texto_Habitat);
-        return sb.toString();
     }
 }

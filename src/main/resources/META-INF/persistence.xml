@@ -6,6 +6,7 @@
     <class>entidades.Tameos</class>
     <class>entidades.Uso_Dinos</class>
     <class>entidades.Dino_Habitat</class>
+    <class>entidades.Habitats</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/arkmino?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="Ailin"/>

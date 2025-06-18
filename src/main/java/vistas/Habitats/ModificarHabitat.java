@@ -5,10 +5,7 @@
 package vistas.Habitats;
 
 import controladores.ControladorHabitats;
-import vistas.Tameos.*;
-import controladores.ControladorTameos;
 import entidades.Habitats;
-import entidades.Tameos;
 import javax.swing.JOptionPane;
 import vistas.Principal;
 
@@ -48,7 +45,7 @@ public class ModificarHabitat extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("URW Gothic", 3, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Ink Free", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Modificar Habitat");
 
