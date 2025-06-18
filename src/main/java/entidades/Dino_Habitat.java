@@ -5,6 +5,7 @@
 package entidades;
 
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,9 +35,7 @@ public class Dino_Habitat {
     @Temporal(TemporalType.DATE)
     private Date fechaInsertado;
 
-    private int porcentaje_Aparicion;
-
-
+    @Column(unique = true)
     private String texto_Habitat;
 
     public String getTexto_Habitat() {
@@ -74,13 +73,4 @@ public class Dino_Habitat {
     public void setFechaInsertado(Date fechaInsertado) {
         this.fechaInsertado = fechaInsertado;
     }
-
-    public int getPorcentaje_Aparicion() {
-        return porcentaje_Aparicion;
-    }
-
-    public void setPorcentaje_Aparicion(int porcentaje_Aparicion) {
-        this.porcentaje_Aparicion = porcentaje_Aparicion;
-    }
-
 }

@@ -7,15 +7,17 @@ package controladores;
 import entidades.Dinosaurios;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
  * @author ailin
  */
 /**
- * Clase que maneja todas las operaciones de la base de datos para los dinosaurios.
- * (Crear, buscar, actualizar, eliminar).
+ * Clase que maneja todas las operaciones de la base de datos para los
+ * dinosaurios. (Crear, buscar, actualizar, eliminar)
  */
 public class ControladorDinosaurios {
 
@@ -28,7 +30,7 @@ public class ControladorDinosaurios {
     }
 
     /*
-     * GUARDA UN NUEVO DINOSAURIO EN LA BASE DE DATOS.
+     * GUARDA UN NUEVO DINOSAURIO EN LA BASE DE DATOS
      */
     public boolean crearDino(Dinosaurios dino) {
         EntityManager em = emf.createEntityManager(); // Abre conexión
@@ -49,7 +51,7 @@ public class ControladorDinosaurios {
     }
 
     /*
-     * BUSCA UN DINOSAURIO POR SU ID.
+     * BUSCA UN DINOSAURIO POR SU ID
      */
     public Dinosaurios buscarDinoPorId(int id) {
         EntityManager em = emf.createEntityManager(); // Abre conexión
@@ -59,9 +61,26 @@ public class ControladorDinosaurios {
             em.close(); // Cierra la conexión
         }
     }
+    
+    /*
+     * BUSCA UN DINOSAURIO POR SU NOMBRE
+     */
+    public Dinosaurios buscarDinosaurioPorNombre(String nombre) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            TypedQuery<Dinosaurios> query = em.createQuery(
+                    "SELECT d FROM Dinosaurios d WHERE d.nombre = :nombre", Dinosaurios.class);
+            query.setParameter("nombre", nombre);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
 
     /*
-     * ACTUALIZA LOS DATOS DE UN DINOSAURIO EXISTENTE.
+     * ACTUALIZA LOS DATOS DE UN DINOSAURIO EXISTENTE
      */
     public boolean actualizarDino(Dinosaurios dino) {
         EntityManager em = emf.createEntityManager(); // Abre conexión
@@ -82,7 +101,7 @@ public class ControladorDinosaurios {
     }
 
     /*
-     * ELIMINA UN DINOSAURIO DE LA BASE DE DATOS.
+     * ELIMINA UN DINOSAURIO DE LA BASE DE DATOS
      */
     public boolean eliminarDinosaurio(int id) {
         EntityManager em = emf.createEntityManager(); // Abre conexión
@@ -106,9 +125,9 @@ public class ControladorDinosaurios {
         }
     }
 
-    /**
-     * CIERRA LA CONEXIÓN CON LA BASE DE DATOS.
-     * (Debe llamarse al terminar de usar el controlador).
+    /*
+     * CIERRA LA CONEXIÓN CON LA BASE DE DATOS (Debe llamarse al terminar de
+     * usar el controlador)
      */
     public void cerrar() {
         if (emf != null && emf.isOpen()) {

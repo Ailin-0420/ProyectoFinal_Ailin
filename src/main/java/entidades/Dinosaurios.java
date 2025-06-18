@@ -104,11 +104,4 @@ public class Dinosaurios {
                 + ", domesticable=" + domesticable
                 + '}';
     }
-
-    public enum TipoDieta {
-        herbívoro,
-        carnívoro,
-        omnívoro,
-        otro
-    }
 }

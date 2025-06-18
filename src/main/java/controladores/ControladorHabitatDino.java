@@ -6,6 +6,7 @@ package controladores;
 
 import entidades.Dino_Habitat;
 import entidades.Dinosaurios;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -16,7 +17,6 @@ import javax.persistence.TypedQuery;
  *
  * @author ailin
  */
-
 /**
  * Maneja las operaciones de la base de datos para los habitats de dinosaurios
  */
@@ -78,21 +78,19 @@ public class ControladorHabitatDino {
         }
     }
 
-    public Dino_Habitat buscarPorTextoYDino(String texto, Dinosaurios dino) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            TypedQuery<Dino_Habitat> query = em.createQuery(
-                    "SELECT h FROM Dino_Habitat h WHERE h.texto_Habitat = :texto AND h.dinosaurio = :dino",
-                    Dino_Habitat.class);
-            query.setParameter("texto", texto);
-            query.setParameter("dino", dino);
-            return query.getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        } finally {
-            em.close();
-        }
+    public Dino_Habitat buscarPorTexto(String texto) {
+    EntityManager em = emf.createEntityManager();
+    try {
+        TypedQuery<Dino_Habitat> query = em.createQuery(
+            "SELECT h FROM Dino_Habitat h WHERE h.texto_Habitat = :texto", Dino_Habitat.class);
+        query.setParameter("texto", texto);
+        List<Dino_Habitat> resultados = query.getResultList();
+        return resultados.isEmpty() ? null : resultados.get(0);
+    } finally {
+        em.close();
     }
+}
+
 
     /*
      * Actualiza los datos de un habitat existente
