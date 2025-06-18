@@ -303,7 +303,7 @@ public class ModificarDino extends javax.swing.JFrame {
 
                     if (habitatCreado) {
                         // Asignar el hábitat al dino tras crearlo
-                        dino.setHabitat(dinoHabitat);
+                        dino.setHabitatDino(dinoHabitat);
                         JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat creados con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         this.dispose();
                     } else {
@@ -319,7 +319,7 @@ public class ModificarDino extends javax.swing.JFrame {
 
                     if (habitatActualizado) {
                         // Asignar el hábitat actualizado al dino
-                        dino.setHabitat(dinoHabitat);
+                        dino.setHabitatDino(dinoHabitat);
                         JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat actualizados con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                         this.dispose();
                     } else {

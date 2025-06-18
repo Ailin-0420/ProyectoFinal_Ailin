@@ -34,17 +34,22 @@ public class Dinosaurios {
     private boolean domesticable;
 
     @OneToOne(mappedBy = "dino")
-    private Dino_Habitat habitat;
+    private Dino_Habitat habitatDino;
+
+    @ManyToOne
+    @JoinColumn(name = "id_Habitat")
+    private Habitats habitat;
 
     public Dinosaurios() {
     }
 
-    public Dinosaurios(int id_Dino, String nombre, String tipo_DietaGeneral, String preferencia_Alimento, boolean domesticable, Dino_Habitat habitat) {
+    public Dinosaurios(int id_Dino, String nombre, String tipo_DietaGeneral, String preferencia_Alimento, boolean domesticable, Dino_Habitat habitatDino, Habitats habitat) {
         this.id_Dino = id_Dino;
         this.nombre = nombre;
         this.tipo_DietaGeneral = tipo_DietaGeneral;
         this.preferencia_Alimento = preferencia_Alimento;
         this.domesticable = domesticable;
+        this.habitatDino = habitatDino;
         this.habitat = habitat;
     }
 
@@ -88,13 +93,23 @@ public class Dinosaurios {
         this.domesticable = domesticable;
     }
 
-    public Dino_Habitat getHabitat() {
+    public Dino_Habitat getHabitatDino() {
+        return habitatDino;
+    }
+
+    public void setHabitatDino(Dino_Habitat habitatDino) {
+        this.habitatDino = habitatDino;
+    }
+
+    public Habitats getHabitat() {
         return habitat;
     }
 
-    public void setHabitat(Dino_Habitat habitat) {
+    public void setHabitat(Habitats habitat) {
         this.habitat = habitat;
     }
+
+    
 
     @Override
     public String toString() {
