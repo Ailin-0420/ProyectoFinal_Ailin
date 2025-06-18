@@ -4,28 +4,36 @@
  */
 package vistas.Habitats;
 
-import controladores.ControladorDinosaurios;
-import controladores.ControladorHabitatDino;
 import controladores.ControladorHabitats;
-import controladores.ControladorTameos;
-import entidades.Dino_Habitat;
-import entidades.Dinosaurios;
-import entidades.Habitats;
-import entidades.Tameos;
 import javax.swing.JOptionPane;
 import vistas.Principal;
+import entidades.Habitats;
+
 
 /**
  *
- * @author Ailin
+ * @author ailin
  */
-public class AñadirHabitat extends javax.swing.JFrame {
+public class VerHabitat extends javax.swing.JFrame {
 
     /**
-     * Creates new form AñadirTameo
+     * Creates new form VerDino
      */
-    public AñadirHabitat() {
+    public VerHabitat(int id) {
         initComponents();
+        if (id > 0) {
+            buscarYMostrarTameo(id);
+        }
+    }
+
+    private void buscarYMostrarTameo(int id) {
+        ControladorHabitats controlador = new ControladorHabitats();
+        Habitats habitat = controlador.buscarHabitatPorId(id);
+        if (habitat != null) {
+            nombreHabitat.setText(habitat.getTexto_Habitat());
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró un dinosaurio con ese nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -37,12 +45,19 @@ public class AñadirHabitat extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        nombre1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         nombreHabitat = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        guardarHabitat = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         volver = new javax.swing.JButton();
+
+        nombre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombre1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +65,7 @@ public class AñadirHabitat extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("URW Gothic", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Hábitats");
+        jLabel1.setText("Ver Habitat por ID");
 
         nombreHabitat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,19 +73,14 @@ public class AñadirHabitat extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Introduce el nombre o cómo es el habitat:");
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Hábitat:");
 
-        guardarHabitat.setBackground(new java.awt.Color(255, 255, 255));
-        guardarHabitat.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
-        guardarHabitat.setForeground(new java.awt.Color(0, 0, 0));
-        guardarHabitat.setText("Guardar");
-        guardarHabitat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardarHabitatActionPerformed(evt);
-            }
-        });
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
 
         volver.setBackground(new java.awt.Color(255, 255, 255));
         volver.setFont(new java.awt.Font("URW Gothic", 0, 15)); // NOI18N
@@ -88,35 +98,36 @@ public class AñadirHabitat extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(nombreHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(64, 64, 64)
-                            .addComponent(jLabel3)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(guardarHabitat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(volver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addGap(53, 53, 53)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nombreHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel8)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(volver)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(guardarHabitat)
                 .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(nombreHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(volver)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(125, 125, 125)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,11 +138,15 @@ public class AñadirHabitat extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombre1ActionPerformed
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
@@ -141,39 +156,6 @@ public class AñadirHabitat extends javax.swing.JFrame {
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_volverActionPerformed
-
-    private void guardarHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarHabitatActionPerformed
-        // TODO add your handling code here:
-        String textoHabitat = nombreHabitat.getText().trim();
-
-        if (textoHabitat.isEmpty()) {
-            JOptionPane.showMessageDialog(this,
-                    "Por favor indique el hábitat",
-                    "Campos incompletos",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        ControladorHabitats controladorHabitat = new ControladorHabitats();
-        try {
-            Habitats nuevoHabitat = new Habitats();
-            nuevoHabitat.setTexto_Habitat(textoHabitat);
-
-            if (controladorHabitat.crearHabitat(nuevoHabitat)) {
-                JOptionPane.showMessageDialog(this,
-                        "Hábitat registrado exitosamente",
-                        "Éxito",
-                        JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "Error al guardar el hábitat",
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        } finally {
-            controladorHabitat.cerrar(); // si tu controlador tiene método cerrar()
-        }
-    }//GEN-LAST:event_guardarHabitatActionPerformed
 
     private void nombreHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreHabitatActionPerformed
         // TODO add your handling code here:
@@ -196,14 +178,38 @@ public class AñadirHabitat extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AñadirHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AñadirHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AñadirHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AñadirHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -216,16 +222,18 @@ public class AñadirHabitat extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AñadirHabitat().setVisible(true);
+                // para que el constructor pueda recibir un int, se pone 1
+                new VerHabitat(1).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton guardarHabitat;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField nombre1;
     private javax.swing.JTextField nombreHabitat;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables

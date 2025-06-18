@@ -10,6 +10,9 @@ import vistas.Dinosaurios.ModificarDino;
 import vistas.Dinosaurios.EliminarDino;
 import vistas.Dinosaurios.AñadirDino;
 import vistas.Habitats.AñadirHabitat;
+import vistas.Habitats.BuscarHabitat;
+import vistas.Habitats.EliminarHabitat;
+import vistas.Habitats.ModificarHabitat;
 import vistas.Tameos.BuscarTameo;
 import vistas.Tameos.EliminarTameo;
 import vistas.Tameos.ModificarTameo;
@@ -367,19 +370,34 @@ public class Principal extends javax.swing.JFrame {
         frame.setLocationRelativeTo(null);     // Centrar en pantalla
         frame.setResizable(false);             // No redimensionable
         frame.setVisible(true);
-        dispose();  
+        dispose();
     }//GEN-LAST:event_añadirHabitatDinoActionPerformed
 
     private void modificarHabitatDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarHabitatDinoActionPerformed
         // TODO add your handling code here:
+        ModificarHabitat frame = new ModificarHabitat();
+        frame.setLocationRelativeTo(null);     // Centrar en pantalla
+        frame.setResizable(false);             // No redimensionable
+        frame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_modificarHabitatDinoActionPerformed
 
     private void verHabitatDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verHabitatDinoActionPerformed
         // TODO add your handling code here:
+        BuscarHabitat frame = new BuscarHabitat();
+        frame.setLocationRelativeTo(null);     // Centrar en pantalla
+        frame.setResizable(false);             // No redimensionable
+        frame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_verHabitatDinoActionPerformed
 
     private void EliminarHabitatDinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarHabitatDinoActionPerformed
         // TODO add your handling code here:
+        EliminarHabitat frame = new EliminarHabitat();     
+        frame.setLocationRelativeTo(null);     // Centrar en pantalla
+        frame.setResizable(false);             // No redimensionable
+        frame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_EliminarHabitatDinoActionPerformed
 
     /**
