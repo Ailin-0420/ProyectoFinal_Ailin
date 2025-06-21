@@ -6,6 +6,7 @@ package controladores;
 
 import entidades.Dino_Habitat;
 import entidades.Dinosaurios;
+import entidades.Habitats;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -33,21 +34,27 @@ public class ControladorHabitatDino {
     /*
      * Guarda un nuevo habitat en la base de datos
      */
+    // nsjanfj
     public boolean crearHabitat(Dino_Habitat habitat) {
-        // Validacion simple
-        if (habitat.getDino()== null) {
-            System.out.println("Error: El habitat debe tener un dinosaurio asociado");
+        // Validación: debe tener dino y habitat asociados
+        if (habitat.getDino() == null || habitat.getHabitat() == null) {
+            System.out.println("Error: El vínculo debe tener un dinosaurio y un hábitat asociados");
             return false;
         }
 
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
+
+            // Asegúrate de que las entidades estén en estado "gestionado"
+            habitat.setDino(em.merge(habitat.getDino()));
+            habitat.setHabitat(em.merge(habitat.getHabitat()));
+
             em.persist(habitat);
             em.getTransaction().commit();
             return true;
         } catch (Exception e) {
-            System.out.println("Error al guardar habitat: " + e.getMessage());
+            System.out.println("Error al guardar vínculo dino-habitat: " + e.getMessage());
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
@@ -79,17 +86,17 @@ public class ControladorHabitatDino {
     }
 
     public Dino_Habitat buscarPorTexto(String texto) {
-    EntityManager em = emf.createEntityManager();
-    try {
-        TypedQuery<Dino_Habitat> query = em.createQuery(
-            "SELECT h FROM Dino_Habitat h WHERE h.texto_Habitat = :texto", Dino_Habitat.class);
-        query.setParameter("texto", texto);
-        List<Dino_Habitat> resultados = query.getResultList();
-        return resultados.isEmpty() ? null : resultados.get(0);
-    } finally {
-        em.close();
+        EntityManager em = emf.createEntityManager();
+        try {
+            TypedQuery<Dino_Habitat> query = em.createQuery(
+                    "SELECT h FROM Dino_Habitat h WHERE h.texto_Habitat = :texto", Dino_Habitat.class);
+            query.setParameter("texto", texto);
+            List<Dino_Habitat> resultados = query.getResultList();
+            return resultados.isEmpty() ? null : resultados.get(0);
+        } finally {
+            em.close();
+        }
     }
-}
 
 
     /*
@@ -135,6 +142,21 @@ public class ControladorHabitatDino {
             return false;
         } finally {
             em.close();
+        }
+    }
+
+    public boolean crearHabitat(Dino_Habitat habitat) {
+        try {
+            em.getTransaction().begin();
+            em.persist(habitat);
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return false;
         }
     }
 

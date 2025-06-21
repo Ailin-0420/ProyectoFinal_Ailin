@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -36,21 +34,16 @@ public class Dinosaurios {
     @OneToOne(mappedBy = "dino")
     private Dino_Habitat habitatDino;
 
-    @ManyToOne
-    @JoinColumn(name = "id_Habitat")
-    private Habitats habitat;
-
     public Dinosaurios() {
     }
 
-    public Dinosaurios(int id_Dino, String nombre, String tipo_DietaGeneral, String preferencia_Alimento, boolean domesticable, Dino_Habitat habitatDino, Habitats habitat) {
+    public Dinosaurios(int id_Dino, String nombre, String tipo_DietaGeneral, String preferencia_Alimento, boolean domesticable, Dino_Habitat habitatDino) {
         this.id_Dino = id_Dino;
         this.nombre = nombre;
         this.tipo_DietaGeneral = tipo_DietaGeneral;
         this.preferencia_Alimento = preferencia_Alimento;
         this.domesticable = domesticable;
         this.habitatDino = habitatDino;
-        this.habitat = habitat;
     }
 
     public int getId_Dino() {
@@ -100,16 +93,6 @@ public class Dinosaurios {
     public void setHabitatDino(Dino_Habitat habitatDino) {
         this.habitatDino = habitatDino;
     }
-
-    public Habitats getHabitat() {
-        return habitat;
-    }
-
-    public void setHabitat(Habitats habitat) {
-        this.habitat = habitat;
-    }
-
-    
 
     @Override
     public String toString() {
