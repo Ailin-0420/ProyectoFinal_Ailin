@@ -10,7 +10,6 @@ import controladores.ControladorHabitats;
 import entidades.Dino_Habitat;
 import entidades.Dinosaurios;
 import entidades.Habitats;
-import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import vistas.Principal;
 

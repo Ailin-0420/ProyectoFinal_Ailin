@@ -6,7 +6,6 @@ package controladores;
 
 import entidades.Dino_Habitat;
 import entidades.Dinosaurios;
-import entidades.Habitats;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -34,7 +33,6 @@ public class ControladorHabitatDino {
     /*
      * Guarda un nuevo habitat en la base de datos
      */
-    // nsjanfj
     public boolean crearHabitat(Dino_Habitat habitat) {
         // Validación: debe tener dino y habitat asociados
         if (habitat.getDino() == null || habitat.getHabitat() == null) {
@@ -145,18 +143,19 @@ public class ControladorHabitatDino {
         }
     }
 
-    public boolean crearHabitat(Dino_Habitat habitat) {
+    public void eliminarTodos() {
+        EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(habitat);
+            em.createQuery("DELETE FROM Dino_Habitat").executeUpdate();
             em.getTransaction().commit();
-            return true;
         } catch (Exception e) {
+            System.out.println("Error al eliminar todos los vinculos dino-habitat: " + e.getMessage());
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            e.printStackTrace();
-            return false;
+        } finally {
+            em.close();
         }
     }
 

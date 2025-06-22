@@ -5,7 +5,9 @@
 package parteCopiaSeguridad;
 
 import controladores.ControladorDinosaurios;
+import controladores.ControladorHabitatDino;
 import controladores.ControladorHabitats;
+import entidades.Dino_Habitat;
 import entidades.Dinosaurios;
 import entidades.Habitats;
 import java.io.BufferedReader;
@@ -27,7 +29,7 @@ import java.util.Map;
  * @author Ailin
  */
 public class CopiaSeguridad {
-    
+
     public static File crearCarpetaBackup() {
         String formatoFecha = "yyyy-MM-dd_HH-mm-ss";
         String nombreCarpeta = "backup_" + new SimpleDateFormat(formatoFecha).format(new Date());
@@ -37,22 +39,22 @@ public class CopiaSeguridad {
         }
         return carpeta;
     }
-    
+
     public static void exportarDinosauriosCSV(List<Dinosaurios> dinoList, File carpeta) throws IOException {
         File file = new File(carpeta, "dinosaurios.csv");
         try (FileWriter fw = new FileWriter(file)) {
             fw.write("id,nombre,tipo_DietaGeneral,preferencia_Alimento,domesticable,id_Habitat\n");
             for (Dinosaurios d : dinoList) {
-                fw.write(d.getId_Dino() + "," +
-                        comasSaltos(d.getNombre()) + "," +
-                        comasSaltos(d.getTipo_DietaGeneral()) + "," +
-                        comasSaltos(d.getPreferencia_Alimento()) + "," +
-                        (d.isDomesticable() ? "1" : "0") + "," +
-                        (d.getHabitat() != null ? d.getHabitat().getId_Habitat() : "") + "\n");
+                fw.write(d.getId_Dino() + ","
+                        + comasSaltos(d.getNombre()) + ","
+                        + comasSaltos(d.getTipo_DietaGeneral()) + ","
+                        + comasSaltos(d.getPreferencia_Alimento()) + ","
+                        + (d.isDomesticable() ? "1" : "0") + ","
+                        + (d.getHabitatDino() != null ? d.getHabitatDino().getId_HabitatDino() : "") + "\n");
             }
         }
     }
-    
+
     public static void exportarHabitatsCSV(List<Habitats> habitatsList, File carpeta) throws IOException {
         File file = new File(carpeta, "habitats.csv");
         try (FileWriter fw = new FileWriter(file)) {
@@ -62,17 +64,19 @@ public class CopiaSeguridad {
             }
         }
     }
-    
+
     // Método para escapar comas y saltos de línea en CSV MUY IMPORYTANTE
     private static String comasSaltos(String texto) {
-        if (texto == null) return "";
+        if (texto == null) {
+            return "";
+        }
         if (texto.contains(",") || texto.contains("\n")) {
             texto = texto.replace("\"", "\"\"");
             return "\"" + texto + "\"";
         }
         return texto;
     }
-    
+
     public static void hacerBackup() throws IOException {
         ControladorDinosaurios controlador1 = new ControladorDinosaurios();
         ControladorHabitats controlador2 = new ControladorHabitats();
@@ -88,12 +92,13 @@ public class CopiaSeguridad {
         controlador1.cerrar();
         controlador2.cerrar();
     }
-    
+
     public static void restaurarUltimaCopia() throws IOException {
         ControladorDinosaurios cd = new ControladorDinosaurios();
         ControladorHabitats ch = new ControladorHabitats();
+        ControladorHabitatDino chd = new ControladorHabitatDino();
 
-        // Buscar la carpeta backup más reciente
+        // Buscar carpeta backup más reciente
         File carpetaBackup = buscarUltimaCarpetaBackup();
         if (carpetaBackup == null) {
             System.out.println("No se encontró ninguna carpeta de backup.");
@@ -102,11 +107,12 @@ public class CopiaSeguridad {
 
         // Eliminar datos actuales
         cd.eliminarTodos();
+        chd.eliminarTodos();
         ch.eliminarTodos();
 
-        // Leer habitats.csv y crear en BD
+        // Restaurar habitats
         File fileHab = new File(carpetaBackup, "habitats.csv");
-        Map<Integer, Habitats> mapaHabitats = new HashMap<>(); // para relacionar dinosaurios después
+        Map<Integer, Habitats> mapaHabitats = new HashMap<>();
         try (BufferedReader br = new BufferedReader(new FileReader(fileHab))) {
             String line = br.readLine(); // salto cabecera
             while ((line = br.readLine()) != null) {
@@ -121,7 +127,7 @@ public class CopiaSeguridad {
             }
         }
 
-        // Leer dinosaurios.csv y crear en BD
+        // Restaurar dinosaurios y vínculos dino-habitat
         File fileDino = new File(carpetaBackup, "dinosaurios.csv");
         try (BufferedReader br = new BufferedReader(new FileReader(fileDino))) {
             String line = br.readLine(); // salto cabecera
@@ -133,22 +139,35 @@ public class CopiaSeguridad {
                 d.setTipo_DietaGeneral(campos[2]);
                 d.setPreferencia_Alimento(campos[3]);
                 d.setDomesticable("1".equals(campos[4]));
+                cd.crearDino(d);
+
+                // Crear vínculo si tiene hábitat asociado
                 if (!campos[5].isEmpty()) {
                     int idHab = Integer.parseInt(campos[5]);
-                    d.setHabitat(mapaHabitats.get(idHab));
+                    Habitats h = mapaHabitats.get(idHab);
+                    if (h != null) {
+                        Dino_Habitat vinculo = new Dino_Habitat();
+                        vinculo.setDino(d);
+                        vinculo.setHabitat(h);
+                        vinculo.setFechaInsertado(new Date());
+                        chd.crearHabitat(vinculo);
+                    }
                 }
-                cd.crearDino(d);
             }
         }
 
+        // Cerrar controladores
         cd.cerrar();
         ch.cerrar();
+        chd.cerrar();
     }
 
     private static File buscarUltimaCarpetaBackup() {
         File dir = new File(".");
         File[] backups = dir.listFiles(f -> f.isDirectory() && f.getName().startsWith("backup_"));
-        if (backups == null || backups.length == 0) return null;
+        if (backups == null || backups.length == 0) {
+            return null;
+        }
         Arrays.sort(backups, Comparator.comparing(File::getName).reversed());
         return backups[0];
     }
@@ -170,7 +189,7 @@ public class CopiaSeguridad {
             }
         }
         tokens.add(sb.toString());
-        // Remover comillas dobles internas y doble comilla
+        // Limpieza de comillas
         for (int i = 0; i < tokens.size(); i++) {
             String t = tokens.get(i);
             if (t.startsWith("\"") && t.endsWith("\"")) {
