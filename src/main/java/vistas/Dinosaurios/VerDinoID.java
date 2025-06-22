@@ -7,6 +7,7 @@ package vistas.Dinosaurios;
 import entidades.Dinosaurios;
 import javax.swing.JOptionPane;
 import controladores.ControladorDinosaurios;
+import entidades.Dino_Habitat;
 import vistas.Principal;
 
 /**
@@ -24,6 +25,18 @@ public class VerDinoID extends javax.swing.JFrame {
             buscarYMostrarDino(id);
         }
     }
+    
+    // metodo privado del frame para obtener el ultimo habitat de un dino
+    private Dino_Habitat obtenerUltimoHabitat(Dinosaurios dino) {
+        if (dino.getHistorialHabitats() == null || dino.getHistorialHabitats().isEmpty()) {
+            return null;
+        }
+
+        return dino.getHistorialHabitats()
+                .stream()
+                .max((a, b) -> a.getFechaInsertado().compareTo(b.getFechaInsertado()))
+                .orElse(null);
+    }
 
     // constructor vacio para el main
     private VerDinoID() {
@@ -38,19 +51,18 @@ public class VerDinoID extends javax.swing.JFrame {
             tipoDieta.setText(dino.getTipo_DietaGeneral());
             preferenciaAlimento.setText(dino.getPreferencia_Alimento());
 
-            // Mostrar texto del hábitat si existe la relación y el hábitat
-            if (dino.getHabitatDino() != null && dino.getHabitatDino().getHabitat() != null) {
-                habitat.setText(dino.getHabitatDino().getHabitat().getTexto_Habitat());
+            Dino_Habitat ultimoHabitat = obtenerUltimoHabitat(dino);
+            if (ultimoHabitat != null && ultimoHabitat.getHabitat() != null) {
+                habitat.setText(ultimoHabitat.getHabitat().getTexto_Habitat());
             } else {
                 habitat.setText("Sin hábitat asignado");
             }
 
             domesticable.setText(dino.isDomesticable() ? "Sí" : "No");
         } else {
-            JOptionPane.showMessageDialog(this, "No se encontró un dinosaurio con ese nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontró un dinosaurio con ese ID.", "Error", JOptionPane.ERROR_MESSAGE);
             this.dispose();
         }
-
     }
 
     /**

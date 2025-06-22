@@ -36,7 +36,6 @@ public class Dinosaurios {
     // Constructor vacío obligatorio
     public Dinosaurios() {}
 
-    // Getters y setters
     public int getId_Dino() { return id_Dino; }
     public void setId_Dino(int id_Dino) { this.id_Dino = id_Dino; }
 

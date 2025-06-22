@@ -7,6 +7,7 @@ package vistas.Dinosaurios;
 import entidades.Dinosaurios;
 import javax.swing.JOptionPane;
 import controladores.ControladorDinosaurios;
+import entidades.Dino_Habitat;
 import vistas.Principal;
 
 /**
@@ -24,6 +25,18 @@ public class VerDinoNombre extends javax.swing.JFrame {
             buscarYMostrarDino(nombreDino);
         }
     }
+    
+    // metodo privado del frame para obtener el ultimo habitat de un dino
+    private Dino_Habitat obtenerUltimoHabitat(Dinosaurios dino) {
+        if (dino.getHistorialHabitats() == null || dino.getHistorialHabitats().isEmpty()) {
+            return null;
+        }
+
+        return dino.getHistorialHabitats()
+                .stream()
+                .max((a, b) -> a.getFechaInsertado().compareTo(b.getFechaInsertado()))
+                .orElse(null);
+    }
 
     private void buscarYMostrarDino(String nombreDino) {
         ControladorDinosaurios controlador = new ControladorDinosaurios();
@@ -34,9 +47,9 @@ public class VerDinoNombre extends javax.swing.JFrame {
             tipoDieta.setText(dino.getTipo_DietaGeneral());
             preferenciaAlimento.setText(dino.getPreferencia_Alimento());
 
-            if (dino.getHabitatDino() != null && dino.getHabitatDino().getHabitat() != null) {
-                // Mostrar el texto del hábitat desde la entidad Habitats
-                habitat.setText(dino.getHabitatDino().getHabitat().getTexto_Habitat());
+            Dino_Habitat ultimoHabitat = obtenerUltimoHabitat(dino);
+            if (ultimoHabitat != null && ultimoHabitat.getHabitat() != null) {
+                habitat.setText(ultimoHabitat.getHabitat().getTexto_Habitat());
             } else {
                 habitat.setText("Sin hábitat asignado");
             }

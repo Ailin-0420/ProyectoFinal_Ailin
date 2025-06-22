@@ -26,6 +26,18 @@ public class ModificarDino extends javax.swing.JFrame {
         initComponents();
     }
 
+    // metodo privado del frame para obtener el ultimo habitat de un dino
+    private Dino_Habitat obtenerUltimoHabitat(Dinosaurios dino) {
+        if (dino.getHistorialHabitats() == null || dino.getHistorialHabitats().isEmpty()) {
+            return null;
+        }
+
+        return dino.getHistorialHabitats()
+                .stream()
+                .max((a, b) -> a.getFechaInsertado().compareTo(b.getFechaInsertado()))
+                .orElse(null);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -311,10 +323,8 @@ public class ModificarDino extends javax.swing.JFrame {
 
             // Ahora trabajar con Dino_Habitat
             ControladorHabitatDino controladorHabitat = new ControladorHabitatDino();
-            Dino_Habitat dinoHabitat = controladorHabitat.obtenerHabitatPorDino(dino);
-
+            Dino_Habitat dinoHabitat = obtenerUltimoHabitat(dino);
             if (dinoHabitat == null) {
-                // Crear nueva relación
                 dinoHabitat = new Dino_Habitat();
                 dinoHabitat.setDino(dino);
                 dinoHabitat.setHabitat(habitatExistente);
@@ -323,7 +333,6 @@ public class ModificarDino extends javax.swing.JFrame {
                 boolean habitatCreadoDino = controladorHabitat.crearHabitat(dinoHabitat);
 
                 if (habitatCreadoDino) {
-                    dino.setHabitatDino(dinoHabitat);
                     JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat creados con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();
                 } else {
@@ -331,24 +340,23 @@ public class ModificarDino extends javax.swing.JFrame {
                 }
 
             } else {
-                // Actualizar relación existente
-                dinoHabitat.setHabitat(habitatExistente);
-                dinoHabitat.setFechaInsertado(new java.util.Date());
+                // Siempre se agrega uno nuevo (no se actualiza, se agrega otro registro)
+                Dino_Habitat nuevoHabitat = new Dino_Habitat();
+                nuevoHabitat.setDino(dino);
+                nuevoHabitat.setHabitat(habitatExistente);
+                nuevoHabitat.setFechaInsertado(new java.util.Date());
 
-                boolean habitatActualizado = controladorHabitat.actualizarHabitat(dinoHabitat);
+                boolean habitatCreado = controladorHabitat.crearHabitat(nuevoHabitat);
 
-                if (habitatActualizado) {
-                    dino.setHabitatDino(dinoHabitat);
-                    JOptionPane.showMessageDialog(this, "Dinosaurio y hábitat actualizados con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                if (habitatCreado) {
+                    JOptionPane.showMessageDialog(this, "Dinosaurio actualizado y nuevo hábitat registrado.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(this, "Error al actualizar el hábitat en Dino_Habitat.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Error al registrar el nuevo hábitat en Dino_Habitat.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
-
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El ID debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_guardarDinoModfActionPerformed
 
     private void habitatModificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habitatModificadoActionPerformed
