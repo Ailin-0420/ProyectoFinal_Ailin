@@ -4,6 +4,7 @@
  */
 package vistas;
 
+import parteCopiaSeguridad.HacerCopia;
 import vistas.Tameos.AñadirTameo;
 import vistas.Dinosaurios.VerDino;
 import vistas.Dinosaurios.ModificarDino;
@@ -59,6 +60,7 @@ public class Principal extends javax.swing.JFrame {
         modificarHabitatDino = new javax.swing.JButton();
         verHabitatDino = new javax.swing.JButton();
         EliminarHabitatDino = new javax.swing.JButton();
+        copiaSeguridad = new javax.swing.JButton();
 
         button1.setLabel("button1");
 
@@ -209,14 +211,22 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        copiaSeguridad.setBackground(new java.awt.Color(255, 255, 255));
+        copiaSeguridad.setForeground(new java.awt.Color(0, 0, 0));
+        copiaSeguridad.setText("Parte copia de seguridad");
+        copiaSeguridad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copiaSeguridadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(77, 77, 77)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(eliminarDino, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(añadirDino)
@@ -226,27 +236,34 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(51, 51, 51)
                                 .addComponent(verTameo)
-                                .addGap(15, 15, 15))
+                                .addGap(47, 47, 47))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(eliminarTameo)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(modificarTameo, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                            .addComponent(añadirTameo)
-                                            .addGap(8, 8, 8))))))))
-                .addGap(32, 32, 32)
+                                    .addComponent(modificarTameo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(añadirTameo)
+                                        .addGap(8, 8, 8))
+                                    .addComponent(eliminarTameo, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(74, 74, 74))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(eliminarDino)
+                        .addGap(32, 32, 32)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(añadirHabitatDino, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(modificarHabitatDino, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(verHabitatDino, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(EliminarHabitatDino, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(copiaSeguridad)
+                        .addGap(200, 200, 200))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +290,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(eliminarDino)
                     .addComponent(eliminarTameo)
                     .addComponent(EliminarHabitatDino))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(copiaSeguridad)
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -400,6 +419,15 @@ public class Principal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_EliminarHabitatDinoActionPerformed
 
+    private void copiaSeguridadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copiaSeguridadActionPerformed
+        // TODO add your handling code here:
+        HacerCopia frame = new HacerCopia();
+        frame.setLocationRelativeTo(null);     // Centrar en pantalla
+        frame.setResizable(false);             // No redimensionable
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_copiaSeguridadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -444,6 +472,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton añadirHabitatDino;
     private javax.swing.JButton añadirTameo;
     private java.awt.Button button1;
+    private javax.swing.JButton copiaSeguridad;
     private javax.swing.JButton eliminarDino;
     private javax.swing.JButton eliminarTameo;
     private javax.swing.JLabel jLabel1;

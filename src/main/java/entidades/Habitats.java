@@ -24,39 +24,22 @@ public class Habitats {
     private String texto_Habitat;
 
     @OneToMany(mappedBy = "habitat")
-    private List<Dinosaurios> dinosaurios;
+    private List<Dino_Habitat> historialDinos;
 
-    public int getId_Habitat() {
-        return id_Habitat;
-    }
+    // Getters y setters
+    public int getId_Habitat() { return id_Habitat; }
+    public void setId_Habitat(int id_Habitat) { this.id_Habitat = id_Habitat; }
 
-    public void setId_Habitat(int id_Habitat) {
-        this.id_Habitat = id_Habitat;
-    }
+    public String getTexto_Habitat() { return texto_Habitat; }
+    public void setTexto_Habitat(String texto_Habitat) { this.texto_Habitat = texto_Habitat; }
 
-    public String getTexto_Habitat() {
-        return texto_Habitat;
-    }
-
-    public void setTexto_Habitat(String texto_Habitat) {
-        this.texto_Habitat = texto_Habitat;
-    }
-
-    public List<Dinosaurios> getDinosaurios() {
-        return dinosaurios;
-    }
-
-    public void setDinosaurios(List<Dinosaurios> dinosaurios) {
-        this.dinosaurios = dinosaurios;
-    }
+    public List<Dino_Habitat> getHistorialDinos() { return historialDinos; }
+    public void setHistorialDinos(List<Dino_Habitat> historialDinos) { this.historialDinos = historialDinos; }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Habitats{");
-        sb.append("texto_Habitat=").append(texto_Habitat + "\n");
-        sb.append(", dinosaurios=").append(dinosaurios + "\n");
-        sb.append('}');
-        return sb.toString();
+        return "Habitats{" +
+                "texto_Habitat='" + texto_Habitat + '\'' +
+                '}';
     }
 }

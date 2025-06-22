@@ -28,15 +28,15 @@ public class Dino_Habitat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_HabitatDino;
 
-    @ManyToOne
-    @JoinColumn(name = "id_Dino")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_Dino", nullable = false)
     private Dinosaurios dino;
 
-    @ManyToOne
-    @JoinColumn(name = "id_Habitat")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_Habitat", nullable = false)
     private Habitats habitat;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInsertado;
 
     public Integer getId_HabitatDino() {

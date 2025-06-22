@@ -41,19 +41,28 @@ public class CopiaSeguridad {
     }
 
     public static void exportarDinosauriosCSV(List<Dinosaurios> dinoList, File carpeta) throws IOException {
-        File file = new File(carpeta, "dinosaurios.csv");
-        try (FileWriter fw = new FileWriter(file)) {
-            fw.write("id,nombre,tipo_DietaGeneral,preferencia_Alimento,domesticable,id_Habitat\n");
-            for (Dinosaurios d : dinoList) {
-                fw.write(d.getId_Dino() + ","
-                        + comasSaltos(d.getNombre()) + ","
-                        + comasSaltos(d.getTipo_DietaGeneral()) + ","
-                        + comasSaltos(d.getPreferencia_Alimento()) + ","
-                        + (d.isDomesticable() ? "1" : "0") + ","
-                        + (d.getHabitatDino() != null ? d.getHabitatDino().getId_HabitatDino() : "") + "\n");
+    File file = new File(carpeta, "dinosaurios.csv");
+    try (FileWriter fw = new FileWriter(file)) {
+        fw.write("id,nombre,tipo_DietaGeneral,preferencia_Alimento,domesticable,id_Habitat\n");
+        for (Dinosaurios d : dinoList) {
+            // Obtener el último Dino_Habitat por fecha
+            Dino_Habitat ultimoHabitat = null;
+            if (d.getHistorialHabitats() != null && !d.getHistorialHabitats().isEmpty()) {
+                ultimoHabitat = d.getHistorialHabitats()
+                                 .stream()
+                                 .max((a, b) -> a.getFechaInsertado().compareTo(b.getFechaInsertado()))
+                                 .orElse(null);
             }
+
+            fw.write(d.getId_Dino() + "," +
+                    comasSaltos(d.getNombre()) + "," +
+                    comasSaltos(d.getTipo_DietaGeneral()) + "," +
+                    comasSaltos(d.getPreferencia_Alimento()) + "," +
+                    (d.isDomesticable() ? "1" : "0") + "," +
+                    (ultimoHabitat != null ? ultimoHabitat.getHabitat().getId_Habitat() : "") + "\n");
         }
     }
+}
 
     public static void exportarHabitatsCSV(List<Habitats> habitatsList, File carpeta) throws IOException {
         File file = new File(carpeta, "habitats.csv");

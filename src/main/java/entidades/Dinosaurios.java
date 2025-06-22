@@ -4,11 +4,12 @@
  */
 package entidades;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,79 +25,39 @@ public class Dinosaurios {
     private int id_Dino;
 
     private String nombre;
-
     private String tipo_DietaGeneral;
-
     private String preferencia_Alimento;
-
     private boolean domesticable;
 
-    @OneToOne(mappedBy = "dino")
-    private Dino_Habitat habitatDino;
+    // Relaciones
+    @OneToMany(mappedBy = "dino")
+    private List<Dino_Habitat> historialHabitats;
 
-    public Dinosaurios() {
-    }
+    // Constructor vacío obligatorio
+    public Dinosaurios() {}
 
-    public Dinosaurios(int id_Dino, String nombre, String tipo_DietaGeneral, String preferencia_Alimento, boolean domesticable, Dino_Habitat habitatDino) {
-        this.id_Dino = id_Dino;
-        this.nombre = nombre;
-        this.tipo_DietaGeneral = tipo_DietaGeneral;
-        this.preferencia_Alimento = preferencia_Alimento;
-        this.domesticable = domesticable;
-        this.habitatDino = habitatDino;
-    }
+    // Getters y setters
+    public int getId_Dino() { return id_Dino; }
+    public void setId_Dino(int id_Dino) { this.id_Dino = id_Dino; }
 
-    public int getId_Dino() {
-        return id_Dino;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public void setId_Dino(int id_Dino) {
-        this.id_Dino = id_Dino;
-    }
+    public String getTipo_DietaGeneral() { return tipo_DietaGeneral; }
+    public void setTipo_DietaGeneral(String tipo_DietaGeneral) { this.tipo_DietaGeneral = tipo_DietaGeneral; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getPreferencia_Alimento() { return preferencia_Alimento; }
+    public void setPreferencia_Alimento(String preferencia_Alimento) { this.preferencia_Alimento = preferencia_Alimento; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public boolean isDomesticable() { return domesticable; }
+    public void setDomesticable(boolean domesticable) { this.domesticable = domesticable; }
+    
+    public List<Dino_Habitat> getHistorialHabitats() { return historialHabitats; }
 
-    public String getTipo_DietaGeneral() {
-        return tipo_DietaGeneral;
-    }
-
-    public void setTipo_DietaGeneral(String tipo_DietaGeneral) {
-        this.tipo_DietaGeneral = tipo_DietaGeneral;
-    }
-
-    public String getPreferencia_Alimento() {
-        return preferencia_Alimento;
-    }
-
-    public void setPreferencia_Alimento(String preferencia_Alimento) {
-        this.preferencia_Alimento = preferencia_Alimento;
-    }
-
-    public boolean isDomesticable() {
-        return domesticable;
-    }
-
-    public void setDomesticable(boolean domesticable) {
-        this.domesticable = domesticable;
-    }
-
-    public Dino_Habitat getHabitatDino() {
-        return habitatDino;
-    }
-
-    public void setHabitatDino(Dino_Habitat habitatDino) {
-        this.habitatDino = habitatDino;
-    }
+    public void setHistorialHabitats(List<Dino_Habitat> historialHabitats) { this.historialHabitats = historialHabitats; }
 
     @Override
     public String toString() {
-        return "Dinosaurio = '" + nombre
-                + '}';
+        return "Dinosaurio = '" + nombre + "'}";
     }
 }
