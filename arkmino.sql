@@ -16,10 +16,7 @@ CREATE TABLE `Dinosaurios` (
   `tipo_DietaGeneral` varchar(50) NOT NULL,
   `preferencia_Alimento` varchar(50) NOT NULL,
   `domesticable` boolean,
-  `id_Habitat` int,
-  CONSTRAINT pk_Dinosaurios PRIMARY KEY (id_Dino),
-  CONSTRAINT fk_habitat_dino FOREIGN KEY (`id_Habitat`) REFERENCES `Habitats` (`id_Habitat`)
-    ON UPDATE CASCADE ON DELETE NO ACTION
+  CONSTRAINT pk_Dinosaurios PRIMARY KEY (id_Dino)
 );
 
 CREATE TABLE `Tameos` (
@@ -54,9 +51,3 @@ CREATE TABLE `Dino_Habitat` (
   CONSTRAINT fk_idHabitat_Habitat FOREIGN KEY (`id_Habitat`) REFERENCES `Habitats` (`id_Habitat`)
     ON UPDATE CASCADE ON DELETE NO ACTION
 );
-
-SELECT * FROM arkmino.dino_habitat;
-SELECT * FROM arkmino.dinosaurios;
-SELECT * FROM arkmino.habitats;
-SELECT * FROM arkmino.tameos;
-SELECT * FROM arkmino.uso_dinos;
