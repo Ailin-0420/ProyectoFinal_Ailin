@@ -4,7 +4,6 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entidades.Dinosaurios</class>
     <class>entidades.Tameos</class>
-    <class>entidades.Uso_Dinos</class>
     <class>entidades.Dino_Habitat</class>
     <class>entidades.Habitats</class>
     <properties>
