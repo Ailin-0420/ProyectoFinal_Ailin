@@ -29,16 +29,6 @@ CREATE TABLE `Tameos` (
     ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE `Uso_Dinos` (
-  `id_Uso` int NOT NULL AUTO_INCREMENT,
-  `id_Dino` int NOT NULL,
-  `metodo_Usado` varchar(100) NOT NULL,
-  `tiempoHoras` varchar(20) NOT NULL,
-  PRIMARY KEY (`id_Uso`),
-  CONSTRAINT fk_idDino_Uso FOREIGN KEY (`id_Dino`) REFERENCES `Dinosaurios` (`id_Dino`)
-    ON UPDATE CASCADE ON DELETE CASCADE
-);
-
 DROP TABLE IF EXISTS `Dino_Habitat`;
 CREATE TABLE `Dino_Habitat` (
   `id_HabitatDino` int NOT NULL AUTO_INCREMENT,
